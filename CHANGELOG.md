@@ -4,6 +4,10 @@
 
 - Modal/Drawer中使用VxeTable tooltip需要设置更高的z-index 防止被遮挡
 
+**OTHERS**
+
+- 移除`getDict`方法
+
 # 1.4.1
 
 **FEATURES**
