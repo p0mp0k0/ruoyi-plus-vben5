@@ -1,62 +1,134 @@
 <!-- eslint-disable eqeqeq -->
-<script setup lang="ts">
+<script lang="tsx">
+import type { PropType } from 'vue';
+
+import type { DictFallback } from './type';
+
 import type { DictData } from '#/api/system/dict/dict-data-model';
 
-import { computed } from 'vue';
+import { computed, defineComponent, h } from 'vue';
 
 import { Spin, Tag } from 'ant-design-vue';
+import { isFunction, isString } from 'lodash-es';
 
 import { tagTypes } from './data';
 
-interface Props {
-  dicts: DictData[]; // dict数组
-  value: number | string; // value
-}
+/**
+ * 使用tsx重构原来的template写法
+ * 在大量if的情况 tsx比template的v-if好用得多
+ */
+export default defineComponent({
+  name: 'DictTag',
+  props: {
+    /**
+     * 字典项options
+     */
+    dicts: {
+      required: false,
+      type: Array as PropType<DictData[]>,
+      default: () => [],
+    },
+    /**
+     * 当前值
+     */
+    value: {
+      required: true,
+      type: [Number, String],
+    },
+    /**
+     * 未匹配到字典项的fallback
+     */
+    fallback: {
+      required: false,
+      type: [String, Function] as PropType<DictFallback>,
+      default: 'unknown',
+    },
+  },
+  setup(props) {
+    const color = computed<string>(() => {
+      const current = props.dicts.find((item) => item.dictValue == props.value);
+      const listClass = current?.listClass ?? '';
+      // 是否为默认的颜色
+      const isDefault = Reflect.has(tagTypes, listClass);
+      // 判断是默认还是自定义颜色
+      if (isDefault) {
+        // 这里做了antd - element-plus的兼容
+        return tagTypes[listClass]!.color;
+      }
+      return listClass;
+    });
 
-const props = withDefaults(defineProps<Props>(), {
-  dicts: undefined,
-});
+    const cssClass = computed<string>(() => {
+      const current = props.dicts.find((item) => item.dictValue == props.value);
+      return current?.cssClass ?? '';
+    });
 
-const color = computed<string>(() => {
-  const current = props.dicts.find((item) => item.dictValue == props.value);
-  const listClass = current?.listClass ?? '';
-  // 是否为默认的颜色
-  const isDefault = Reflect.has(tagTypes, listClass);
-  // 判断是默认还是自定义颜色
-  if (isDefault) {
-    // 这里做了antd - element-plus的兼容
-    return tagTypes[listClass]!.color;
-  }
-  return listClass;
-});
+    /**
+     * 返回null 走 fallback逻辑
+     */
+    const label = computed<null | string>(() => {
+      const current = props.dicts.find((item) => item.dictValue == props.value);
+      return current?.dictLabel ?? null;
+    });
 
-const cssClass = computed<string>(() => {
-  const current = props.dicts.find((item) => item.dictValue == props.value);
-  return current?.cssClass ?? '';
-});
+    const loading = computed(() => {
+      return props.dicts?.length === 0;
+    });
 
-const label = computed<number | string>(() => {
-  const current = props.dicts.find((item) => item.dictValue == props.value);
-  return current?.dictLabel ?? 'unknown';
-});
+    return {
+      color,
+      cssClass,
+      label,
+      loading,
+    };
+  },
+  render() {
+    const { color, cssClass, label, loading, fallback, value } = this;
 
-const tagComponent = computed(() => (color.value ? Tag : 'div'));
+    /**
+     * 字典list为0 加载中
+     */
+    if (loading) {
+      return (
+        <div>
+          <Spin size="small" spinning />
+        </div>
+      );
+    }
 
-const loading = computed(() => {
-  return props.dicts?.length === 0;
+    /**
+     * 没有匹配到字典（label === null）的fallback
+     * 可为string/Vnode
+     */
+    if (label === null) {
+      // VNode
+      if (isFunction(fallback)) {
+        return h(fallback(value));
+      }
+      // 默认显示 unknown 文案
+      if (isString(fallback)) {
+        return <div>{fallback}</div>;
+      }
+    }
+
+    /**
+     * 有color 属性 渲染Tag
+     */
+    if (color) {
+      return (
+        <div>
+          <Tag class={cssClass} color={color}>
+            {label}
+          </Tag>
+        </div>
+      );
+    }
+
+    return (
+      <div>
+        <div class={cssClass}>{label}</div>
+      </div>
+    );
+  },
 });
 </script>
-
-<template>
-  <div>
-    <component
-      v-if="!loading"
-      :is="tagComponent"
-      :class="cssClass"
-      :color="color"
-    >
-      {{ label }}
-    </component>
-    <Spin v-else :spinning="true" size="small" />
-  </div>
-</template>

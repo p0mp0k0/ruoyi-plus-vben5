@@ -5,10 +5,12 @@
 - 流程表达式 follow后端更新
 - websocket功能(默认关闭)
 - useVbenForm 增加 TimeRangePicker(时间区间选择) 组件
+- 字典(DictTag)支持fallback属性(未匹配到字典项时的回显)
 
 **REFACTOR**
 
 - Modal/Drawer中使用VxeTable tooltip需要设置更高的z-index 防止被遮挡
+- 字典(DictTag)使用tsx写法重构
 
 **OTHERS**
 
