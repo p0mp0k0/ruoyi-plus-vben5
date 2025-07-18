@@ -79,8 +79,8 @@ export const useAuthStore = defineStore('auth', () => {
 
   async function logout(redirect: boolean = true) {
     try {
-      await seeConnectionClose();
-      await doLogout();
+      // 这两个接口不依赖 不需要await sseClose
+      await Promise.all([seeConnectionClose(), doLogout()]);
     } catch (error) {
       console.error(error);
     } finally {
