@@ -73,8 +73,8 @@ const [BasicTable, tableApi] = useVbenVxeGrid({
   gridOptions,
   gridEvents: {
     cellClick: ({ row }) => {
-      // 非草稿状态 不做处理
-      if (row.status !== 'draft') {
+      // 草稿状态 不做处理
+      if (row.status === 'draft') {
         return;
       }
       // 查看详情
