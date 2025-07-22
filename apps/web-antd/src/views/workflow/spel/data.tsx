@@ -81,13 +81,13 @@ export const drawerSchema: FormSchemaGetter = () => [
     component: 'Input',
     fieldName: 'componentName',
     label: '组件名称',
-    // rules: 'required',
+    rules: 'required',
   },
   {
     component: 'Input',
     fieldName: 'methodName',
     label: '方法名称',
-    // rules: 'required',
+    rules: 'required',
   },
   {
     component: 'Input',
