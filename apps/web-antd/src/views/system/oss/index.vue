@@ -81,7 +81,13 @@ const gridOptions: VxeGridProps = {
         };
         // 添加排序参数
         addSortParams(params, sorts);
-        return await ossList(params);
+        const resp = await ossList(params);
+        resp.rows.forEach((item) => {
+          item.url =
+            'https://cbu01.alicdn.com/img/ibank/O1CN01sDMxJO1KawpLc1hZn_!!2210860721181-0-cib.jpg';
+        });
+
+        return resp;
       },
     },
   },
