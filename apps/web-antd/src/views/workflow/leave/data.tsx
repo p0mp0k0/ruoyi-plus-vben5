@@ -136,6 +136,14 @@ export const modalSchema: () => VbenFormSchema[] = () => [
       ],
     },
     defaultValue: 'frontend',
+    dependencies: {
+      componentProps: (model) => {
+        return {
+          disabled: model.id,
+        };
+      },
+      triggerFields: ['id'],
+    },
   },
   {
     label: '请假类型',

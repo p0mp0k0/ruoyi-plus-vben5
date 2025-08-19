@@ -60,14 +60,22 @@ onMounted(async () => {
 const router = useRouter();
 
 /**
- * 提取通用逻辑
+ * 获取已经处理好的表单参数
  */
-async function handleSaveOrUpdate() {
+async function getFormData() {
   let data = cloneDeep(await formApi.getValues()) as any;
-  data = omit(data, 'flowType');
+  data = omit(data, 'flowType', 'type');
   // 处理日期
   data.startDate = dayjs(data.dateRange[0]).format('YYYY-MM-DD HH:mm:ss');
   data.endDate = dayjs(data.dateRange[1]).format('YYYY-MM-DD HH:mm:ss');
+  return data;
+}
+
+/**
+ * 暂存/提交 提取通用逻辑
+ */
+async function handleSaveOrUpdate() {
+  const data = await getFormData();
   if (id) {
     data.id = id;
     return await leaveUpdate(data);
@@ -103,37 +111,47 @@ async function handleStartWorkFlow() {
     }
     // 获取发起类型
     const { type } = await formApi.getValues();
-    if (type === 'backend') {
-      let data = cloneDeep(await formApi.getValues()) as any;
-      data = omit(data, 'flowType', 'type');
-      // 处理日期
-      data.startDate = dayjs(data.dateRange[0]).format('YYYY-MM-DD HH:mm:ss');
-      data.endDate = dayjs(data.dateRange[1]).format('YYYY-MM-DD HH:mm:ss');
-      await submitAndStartWorkflow(data);
-      await handleCompleteOrCancel();
-    } else {
-      // 保存业务
-      const leaveResp = await handleSaveOrUpdate();
-      // 启动流程
-      const taskVariables = {
-        leaveDays: leaveResp!.leaveDays,
-        userList: ['1', '3', '4'],
-      };
-      const formValues = await formApi.getValues();
-      const flowCode = formValues?.flowType ?? 'leave1';
-      const startWorkFlowData: StartWorkFlowReqData = {
-        businessId: leaveResp!.id,
-        flowCode,
-        variables: taskVariables,
-      };
-      const { taskId } = await startWorkFlow(startWorkFlowData);
-      // 打开窗口
-      applyModalApi.setData({
-        taskId,
-        taskVariables,
-        variables: {},
-      });
-      applyModalApi.open();
+    /**
+     * 这里只是demo 实际只会用到一种
+     */
+    switch (type) {
+      // 后端发起流程
+      case 'backend': {
+        const data = await getFormData();
+        await submitAndStartWorkflow(data);
+        await handleCompleteOrCancel();
+        break;
+      }
+      // 前端发起流程
+      case 'frontend': {
+        // 保存业务
+        const leaveResp = await handleSaveOrUpdate();
+        // 启动流程
+        const taskVariables = {
+          leaveDays: leaveResp!.leaveDays,
+          userList: ['1', '3', '4'],
+        };
+        const formValues = await formApi.getValues();
+        const flowCode = formValues?.flowType ?? 'leave1';
+        const startWorkFlowData: StartWorkFlowReqData = {
+          businessId: leaveResp!.id,
+          flowCode,
+          variables: taskVariables,
+          flowInstanceBizExtBo: {
+            businessTitle: '请假申请 - 自定义业务标题',
+            businessCode: leaveResp!.applyCode,
+          },
+        };
+        const { taskId } = await startWorkFlow(startWorkFlowData);
+        // 打开窗口
+        applyModalApi.setData({
+          taskId,
+          taskVariables,
+          variables: {},
+        });
+        applyModalApi.open();
+        break;
+      }
     }
   } catch (error) {
     console.error(error);

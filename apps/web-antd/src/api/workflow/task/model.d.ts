@@ -63,9 +63,9 @@ export interface StartWorkFlowReqData {
    */
   variables: Record<string, any>;
   /**
-   * 流程实例业务扩展业务对象
+   * 流程实例业务扩展业务对象 必须要有不能为null 可以为空对象
    */
-  flowInstanceBizExtBo?: Record<string, any>;
+  flowInstanceBizExtBo: Record<string, any>;
 }
 
 export interface TaskOperationData {
