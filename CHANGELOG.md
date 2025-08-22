@@ -1,5 +1,7 @@
 # 1.5.0
 
+对应后端版本 单体/微服务: 5.5.0/2.5.0
+
 **FEATURES**
 
 - 流程表达式 follow后端更新
@@ -25,6 +27,10 @@
 
 - 移除`getDict`方法 & getDictOptions代码修改(逻辑不变)
 - 在`isTransformResponse`场景下对401的校验
+
+**BUG FIX**
+
+- 解决热更新Cannot read properties of null (reading 'nextSibling')报错
 
 # 1.4.1
 
