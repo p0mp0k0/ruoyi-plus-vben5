@@ -1,3 +1,4 @@
+/* eslint-disable prefer-template */
 /* eslint-disable no-console */
 import { sm2 } from 'sm-crypto';
 
@@ -9,12 +10,28 @@ import { BaseAsymmetricEncryption } from '../base';
  * @see https://tool.hiofd.com/sm2-key-gen/ 这里可以生成04开头的SM2密钥对
  */
 export class Sm2Encryption extends BaseAsymmetricEncryption {
-  override decrypt(str: string): string {
-    return sm2.doDecrypt(str, this.privateKey);
+  override decrypt(hexStr: string): string {
+    /**
+     * 后端必须使用`EncryptUtils.encryptBySm2Hex`来加密而不是base64
+     * 后端返回会固定带04前缀 需要去除
+     *
+     * @see https://github.com/JuneAndGreen/sm-crypto?tab=readme-ov-file#%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86
+     * ps：密文会在解密时自动补充 04，如遇到其他工具补充的 04 需手动去除再传入。
+     */
+    if (hexStr.startsWith('04')) {
+      hexStr = hexStr.slice(2);
+    }
+    return sm2.doDecrypt(hexStr, this.privateKey);
   }
 
   override encrypt(str: string): string {
-    return sm2.doEncrypt(str, this.publicKey);
+    /**
+     * sm2解密有千分之几的错误，报异常java.lang.IllegalArgumentException: Invalid point coordinates
+     * @see https://github.com/chinabugotech/hutool/issues/3262
+     *
+     * 固定加上04前缀 避免出现上述问题
+     */
+    return '04' + sm2.doEncrypt(str, this.publicKey);
   }
 }
 

@@ -7,10 +7,16 @@ import { BaseSymmetricEncryption } from '../base';
  * SM4 实现
  */
 export class Sm4Encryption extends BaseSymmetricEncryption {
-  override decrypt(data: string, key: string): string {
+  /**
+   * 解密 data必须为hex字符串 可使用后端EncryptUtils.encryptBySm4Hex来加密
+   * @param hexString 待解密数据 只接受hex类型的字符串
+   * @param key 秘钥
+   * @returns result
+   */
+  override decrypt(hexString: string, key: string): string {
     this.checkKey(key);
     const keyHex = CryptoJS.enc.Hex.stringify(CryptoJS.enc.Utf8.parse(key));
-    return sm4.decrypt(data, keyHex);
+    return sm4.decrypt(hexString, keyHex);
   }
 
   override encrypt(data: string, key: string): string {
