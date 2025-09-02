@@ -10,6 +10,8 @@ import {
   listToTree,
 } from '@vben/utils';
 
+import { Input } from 'ant-design-vue';
+
 import { useVbenForm } from '#/adapter/form';
 import { menuAdd, menuInfo, menuList, menuUpdate } from '#/api/system/menu';
 import { defaultFormValueGetter, useBeforeCloseDiff } from '#/utils/popup';
@@ -151,6 +153,16 @@ async function handleClosed() {
 
 <template>
   <BasicDrawer :title="title" class="w-[600px]">
-    <BasicForm />
+    <BasicForm>
+      <template #remark="slotProps">
+        <div class="flex flex-col gap-2">
+          <Input v-bind="slotProps" />
+          <span class="text-[14px] leading-[1.5] text-black/45">
+            在ele作为activePath使用 但是非json格式 v5无法使用
+            建议自行在apps/web-antd/src/router/access.ts更改
+          </span>
+        </div>
+      </template>
+    </BasicForm>
   </BasicDrawer>
 </template>

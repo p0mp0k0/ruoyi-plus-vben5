@@ -382,4 +382,10 @@ export const drawerSchema: FormSchemaGetter = () => [
     help: '路由的keepAlive属性',
     label: '是否缓存',
   },
+  {
+    component: 'Input',
+    fieldName: 'remark',
+    label: '拓展字段',
+    formItemClass: 'items-baseline',
+  },
 ];
