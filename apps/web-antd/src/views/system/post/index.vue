@@ -12,7 +12,12 @@ import { getVxePopupContainer } from '@vben/utils';
 import { Modal, Popconfirm, Space } from 'ant-design-vue';
 
 import { useVbenVxeGrid, vxeCheckboxChecked } from '#/adapter/vxe-table';
-import { postExport, postList, postRemove } from '#/api/system/post';
+import {
+  postDeptTreeSelect,
+  postExport,
+  postList,
+  postRemove,
+} from '#/api/system/post';
 import { commonDownloadExcel } from '#/utils/file/download';
 import DeptTree from '#/views/system/user/dept-tree.vue';
 
@@ -122,6 +127,7 @@ function handleDownloadExcel() {
 <template>
   <Page :auto-content-height="true" content-class="flex gap-[8px] w-full">
     <DeptTree
+      :api="postDeptTreeSelect"
       v-model:select-dept-id="selectDeptId"
       class="w-[260px]"
       @reload="() => tableApi.reload()"
