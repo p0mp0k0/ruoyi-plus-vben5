@@ -5,7 +5,7 @@ import { useVbenDrawer } from '@vben/common-ui';
 import { $t } from '@vben/locales';
 import { cloneDeep } from '@vben/utils';
 
-import { message } from 'ant-design-vue';
+import { message, Skeleton } from 'ant-design-vue';
 
 import { useVbenForm } from '#/adapter/form';
 import { tenantAdd, tenantInfo, tenantUpdate } from '#/api/system/tenant';
@@ -69,6 +69,7 @@ const { onBeforeClose, markInitialized, resetInitialized } = useBeforeCloseDiff(
   },
 );
 
+const loading = ref(false);
 const [BasicDrawer, drawerApi] = useVbenDrawer({
   onBeforeClose,
   onClosed: handleClosed,
@@ -78,15 +79,19 @@ const [BasicDrawer, drawerApi] = useVbenDrawer({
       return null;
     }
     drawerApi.drawerLoading(true);
+    loading.value = true;
 
     const { id } = drawerApi.getData() as { id?: number | string };
     isUpdate.value = !!id;
-    // 初始化
-    await setupPackageSelect();
 
     if (isUpdate.value && id) {
-      const record = await tenantInfo(id);
+      const [record] = await Promise.all([
+        tenantInfo(id),
+        setupPackageSelect(),
+      ]);
       await formApi.setValues(record);
+    } else {
+      await setupPackageSelect();
     }
 
     formApi.updateSchema([
@@ -100,6 +105,7 @@ const [BasicDrawer, drawerApi] = useVbenDrawer({
     await markInitialized();
 
     drawerApi.drawerLoading(false);
+    loading.value = false;
   },
 });
 
@@ -133,7 +139,8 @@ async function handleClosed() {
 
 <template>
   <BasicDrawer :title="title" class="w-[600px]">
-    <BasicForm />
+    <Skeleton v-if="loading" active />
+    <BasicForm v-show="!loading" />
   </BasicDrawer>
 </template>
 
