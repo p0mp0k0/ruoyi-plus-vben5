@@ -13,6 +13,7 @@
 - Vxe/Antd可编辑表格适配器(样式等) 解决浮层元素点击与失焦冲突导致无法选中的问题
 - 工作流 后端发起流程demo
 - API加密 前端已经实现RSA/SM2 AES/SM4
+- Tinymce升级到7.9.1(v7版本的latest)
 
 **REFACTOR**
 

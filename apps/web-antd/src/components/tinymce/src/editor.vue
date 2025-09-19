@@ -128,6 +128,8 @@ const initOptions = computed((): InitOptions => {
     skin: skinName.value,
     toolbar,
     toolbar_mode: 'sliding',
+    // 隐藏下面的 按xxx获取帮助
+    help_accessibility: false,
     ...options,
     /**
      * 覆盖默认的base64行为
