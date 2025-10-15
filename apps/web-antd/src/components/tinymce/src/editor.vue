@@ -173,8 +173,11 @@ const initOptions = computed((): InitOptions => {
       });
 
       // 监听内容变化，处理待附加 data-oss-id 的图片
-      editor.on('NodeChange', () => {
-        if (pendingImageMap.size === 0) return;
+      editor.on('change', () => {
+        if (pendingImageMap.size === 0) {
+          return;
+        }
+
         pendingImageMap.forEach((ossId, url) => {
           const imgDoms = editor.dom.select(`img[src="${url}"]`);
           if (imgDoms && imgDoms.length > 0) {
