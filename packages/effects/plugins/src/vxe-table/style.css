@@ -141,3 +141,8 @@ TODO: 最后一条数据hover/check仍会显示边框
   border-radius: var(--vxe-ui-table-border-radius)
     var(--vxe-ui-table-border-radius) 0 0;
 }
+
+/* modal/drawer里使用列配置 重置列弹窗被遮挡 */
+.vxe-dynamics--modal > .vxe-modal--wrapper {
+  z-index: calc(var(--popup-z-index) + 1) !important;
+}

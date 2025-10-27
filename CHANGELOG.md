@@ -14,6 +14,7 @@
 
 - 菜单管理 新增没有加载下拉选择api
 - v-access:role指令错误判断code而非role
+- modal/drawer里使用列配置 重置列弹窗被遮挡
 
 # 1.5.1
 
