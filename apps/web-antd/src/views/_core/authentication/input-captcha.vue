@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Input } from 'ant-design-vue';
+import { Input } from 'antdv-next';
 
 interface Props {
   captcha?: string;

@@ -1,6 +1,6 @@
 import { defineComponent, h, ref } from 'vue';
 
-import { Modal } from 'ant-design-vue';
+import { Modal } from 'antdv-next';
 import dayjs from 'dayjs';
 import duration from 'dayjs/plugin/duration';
 import relativeTime from 'dayjs/plugin/relativeTime';

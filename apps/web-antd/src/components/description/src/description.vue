@@ -1,6 +1,6 @@
 <script lang="tsx">
-import type { CardSize } from 'ant-design-vue/es/card/Card';
-import type { DescriptionsProps } from 'ant-design-vue/es/descriptions';
+import type { CardSize } from 'antdv-next/es/card/Card';
+import type { DescriptionsProps } from 'antdv-next/es/descriptions';
 
 import type { CSSProperties, PropType, Slots } from 'vue';
 
@@ -8,7 +8,7 @@ import type { DescInstance, DescItem, DescriptionProps } from './typing';
 
 import { computed, defineComponent, ref, toRefs, unref, useAttrs } from 'vue';
 
-import { Card, Descriptions } from 'ant-design-vue';
+import { Card, Descriptions } from 'antdv-next';
 import { get, isFunction } from 'lodash-es';
 
 const props = {

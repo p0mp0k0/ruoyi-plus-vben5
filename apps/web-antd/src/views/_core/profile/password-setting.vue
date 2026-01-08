@@ -5,7 +5,7 @@ import { computed, ref } from 'vue';
 
 import { ProfilePasswordSetting, z } from '@vben/common-ui';
 
-import { message } from 'ant-design-vue';
+import { message } from 'antdv-next';
 
 const profilePasswordSettingRef = ref();
 

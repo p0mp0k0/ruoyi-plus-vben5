@@ -6,7 +6,7 @@ import { computed, ref } from 'vue';
 
 import { useVbenModal } from '@vben/common-ui';
 
-import { Descriptions, DescriptionsItem, Modal } from 'ant-design-vue';
+import { Descriptions, DescriptionsItem, Modal } from 'antdv-next';
 
 import {
   getTaskByTaskId,

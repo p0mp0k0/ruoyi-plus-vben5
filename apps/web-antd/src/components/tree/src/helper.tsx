@@ -5,7 +5,7 @@ import type { MenuOption } from '#/api/system/menu/model';
 
 import { eachTree, treeToList } from '@vben/utils';
 
-import { notification } from 'ant-design-vue';
+import { notification } from 'antdv-next';
 import { difference, isEmpty, isUndefined } from 'lodash-es';
 
 /**

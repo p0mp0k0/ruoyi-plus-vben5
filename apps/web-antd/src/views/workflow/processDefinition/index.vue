@@ -1,6 +1,6 @@
 <!-- eslint-disable no-use-before-define -->
 <script setup lang="ts">
-import type { RadioChangeEvent } from 'ant-design-vue';
+import type { RadioChangeEvent } from 'antdv-next';
 
 import type { VbenFormProps } from '@vben/common-ui';
 import type { Recordable } from '@vben/types';
@@ -21,7 +21,7 @@ import {
   RadioGroup,
   Space,
   Switch,
-} from 'ant-design-vue';
+} from 'antdv-next';
 
 import { useVbenVxeGrid, vxeCheckboxChecked } from '#/adapter/vxe-table';
 import {

@@ -6,7 +6,7 @@ import { useVbenDrawer } from '@vben/common-ui';
 import { $t } from '@vben/locales';
 import { cloneDeep } from '@vben/utils';
 
-import { Button, message, Skeleton } from 'ant-design-vue';
+import { Button, message, Skeleton } from 'antdv-next';
 
 import { useVbenForm } from '#/adapter/form';
 import { tenantAdd, tenantInfo, tenantUpdate } from '#/api/system/tenant';

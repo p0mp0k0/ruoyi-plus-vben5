@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { UpdatePasswordParam } from '#/api/system/profile/model';
 
-import { Modal } from 'ant-design-vue';
+import { Modal } from 'antdv-next';
 import { omit } from 'lodash-es';
 
 import { useVbenForm, z } from '#/adapter/form';

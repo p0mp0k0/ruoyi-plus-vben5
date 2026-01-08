@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import type { UploadFile } from 'ant-design-vue/es/upload/interface';
+import type { UploadFile } from 'antdv-next';
 
 import { h, ref, unref } from 'vue';
 
 import { useVbenModal } from '@vben/common-ui';
 import { ExcelIcon, InBoxIcon } from '@vben/icons';
 
-import { Modal, Switch, Upload } from 'ant-design-vue';
+import { Modal, Switch, Upload } from 'antdv-next';
 
 import { downloadImportTemplate, userImportData } from '#/api/system/user';
 import { commonDownloadExcel } from '#/utils/file/download';
@@ -80,7 +80,7 @@ function handleCancel() {
       accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
     >
       <p class="ant-upload-drag-icon flex items-center justify-center">
-        <InBoxIcon class="text-primary size-[48px]" />
+        <InBoxIcon class="size-[48px] text-primary" />
       </p>
       <p class="ant-upload-text">点击或者拖拽到此处上传文件</p>
     </UploadDragger>

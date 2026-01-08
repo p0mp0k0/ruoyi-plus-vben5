@@ -14,7 +14,7 @@ import {
   InputNumber,
   Row,
   Select,
-} from 'ant-design-vue';
+} from 'antdv-next';
 // 本例子用不到visible类型的动画。带有VisibleOnce和Visible的类型会在组件进入视口被显示时执行动画，
 const presets = MotionPresets.filter((v) => !v.includes('Visible'));
 const showCard1 = refAutoReset(true, 100);

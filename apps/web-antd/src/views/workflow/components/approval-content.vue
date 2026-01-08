@@ -1,6 +1,6 @@
 <!-- 审批终止 Modal弹窗的content属性专用 用于填写审批意见 -->
 <script setup lang="ts">
-import { Textarea } from 'ant-design-vue';
+import { Textarea } from 'antdv-next';
 
 defineOptions({
   name: 'ApprovalContent',

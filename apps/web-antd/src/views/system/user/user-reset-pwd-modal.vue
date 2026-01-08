@@ -5,7 +5,7 @@ import { ref } from 'vue';
 
 import { useVbenModal, z } from '@vben/common-ui';
 
-import { Descriptions, DescriptionsItem } from 'ant-design-vue';
+import { Descriptions, DescriptionsItem } from 'antdv-next';
 
 import { useVbenForm } from '#/adapter/form';
 import { userResetPassword } from '#/api/system/user';

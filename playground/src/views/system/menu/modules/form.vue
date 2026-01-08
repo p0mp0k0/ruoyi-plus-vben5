@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { ChangeEvent } from 'ant-design-vue/es/_util/EventInterface';
+import type { ChangeEvent } from 'antdv-next/es/_util/EventInterface';
 
 import type { Recordable } from '@vben/types';
 

@@ -9,7 +9,7 @@ import { ref } from 'vue';
 import { Page } from '@vben/common-ui';
 import { getVxePopupContainer } from '@vben/utils';
 
-import { Popconfirm } from 'ant-design-vue';
+import { Popconfirm } from 'antdv-next';
 import { slice } from 'lodash-es';
 
 import { useVbenVxeGrid } from '#/adapter/vxe-table';

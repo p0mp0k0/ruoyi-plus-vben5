@@ -12,7 +12,7 @@ import {
   UsergroupAddOutlined,
   UserOutlined,
 } from '@ant-design/icons-vue';
-import { Avatar, TimelineItem } from 'ant-design-vue';
+import { Avatar, TimelineItem } from 'antdv-next';
 
 import { ossInfo } from '#/api/system/oss';
 import { renderDict } from '#/utils/render';

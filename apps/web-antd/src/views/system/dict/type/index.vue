@@ -9,7 +9,7 @@ import { ref } from 'vue';
 import { useVbenModal } from '@vben/common-ui';
 import { getVxePopupContainer } from '@vben/utils';
 
-import { Modal, Popconfirm, Space } from 'ant-design-vue';
+import { Modal, Popconfirm, Space } from 'antdv-next';
 
 import { useVbenVxeGrid, vxeCheckboxChecked } from '#/adapter/vxe-table';
 import {

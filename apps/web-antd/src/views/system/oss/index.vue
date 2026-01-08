@@ -23,7 +23,7 @@ import {
   Spin,
   Switch,
   Tooltip,
-} from 'ant-design-vue';
+} from 'antdv-next';
 
 import {
   addSortParams,

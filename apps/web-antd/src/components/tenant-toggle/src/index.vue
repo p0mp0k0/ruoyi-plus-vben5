@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import type { MessageType } from 'ant-design-vue/es/message';
-import type { SelectHandler } from 'ant-design-vue/es/vc-select/Select';
+import type { MessageType } from 'antdv-next/dist/message/interface';
 
 import type { TenantOption } from '#/api';
 
@@ -11,7 +10,7 @@ import { useAccess } from '@vben/access';
 import { useTabs } from '@vben/hooks';
 import { $t } from '@vben/locales';
 
-import { message, Select, Spin } from 'ant-design-vue';
+import { message, Select, Spin } from 'antdv-next';
 import { storeToRefs } from 'pinia';
 
 import { tenantDynamicClear, tenantDynamicToggle } from '#/api/system/tenant';
@@ -133,6 +132,7 @@ function filterOption(input: string, option: TenantOption) {
 <template>
   <div v-if="showToggle" class="mr-[8px] hidden md:block">
     <Select
+      variant="outlined"
       v-model:value="selected"
       :disabled="loading"
       :field-names="{ label: 'companyName', value: 'tenantId' }"

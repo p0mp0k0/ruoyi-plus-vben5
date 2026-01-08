@@ -1,6 +1,6 @@
 import { $t } from '@vben/locales';
 
-import { message, Modal } from 'ant-design-vue';
+import { message, Modal } from 'antdv-next';
 
 import { useAuthStore } from '#/store';
 

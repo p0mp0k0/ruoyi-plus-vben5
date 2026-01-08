@@ -10,7 +10,7 @@ import { useAccess } from '@vben/access';
 import { Fallback, Page, useVbenDrawer } from '@vben/common-ui';
 import { getVxePopupContainer } from '@vben/utils';
 
-import { Modal, Popconfirm, Space } from 'ant-design-vue';
+import { Modal, Popconfirm, Space } from 'antdv-next';
 
 import { useVbenVxeGrid, vxeCheckboxChecked } from '#/adapter/vxe-table';
 import {

@@ -21,7 +21,7 @@ import {
   UsergroupDeleteOutlined,
   UserOutlined,
 } from '@ant-design/icons-vue';
-import { Dropdown, Menu, MenuItem, Modal, Space } from 'ant-design-vue';
+import { Dropdown, Menu, MenuItem, Modal, Space } from 'antdv-next';
 
 import {
   cancelProcessApply,

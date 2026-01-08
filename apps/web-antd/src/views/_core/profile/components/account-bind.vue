@@ -5,7 +5,7 @@ import type { SocialInfo } from '#/api/system/social/model';
 
 import { onMounted, ref } from 'vue';
 
-import { Alert, Avatar, Card, Empty, Modal, Tooltip } from 'ant-design-vue';
+import { Alert, Avatar, Card, Empty, Modal, Tooltip } from 'antdv-next';
 
 import { authUnbinding } from '#/api';
 import { socialList } from '#/api/system/social';

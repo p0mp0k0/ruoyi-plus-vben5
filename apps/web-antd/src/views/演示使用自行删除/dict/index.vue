@@ -12,7 +12,7 @@ import {
   RadioGroup,
   Select,
   Space,
-} from 'ant-design-vue';
+} from 'antdv-next';
 import { repeat } from 'lodash-es';
 
 import { DictTag } from '#/components/dict';

@@ -3,7 +3,7 @@ import { h } from 'vue';
 
 import { JsonPreview, useVbenModal } from '@vben/common-ui';
 
-import { Modal, Space } from 'ant-design-vue';
+import { Modal, Space } from 'antdv-next';
 
 import { useVbenForm } from '#/adapter/form';
 

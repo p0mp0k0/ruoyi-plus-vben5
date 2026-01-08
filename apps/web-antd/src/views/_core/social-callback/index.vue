@@ -9,7 +9,7 @@ import { preferences } from '@vben/preferences';
 import { useAccessStore } from '@vben/stores';
 import { cn } from '@vben/utils';
 
-import { message, Spin } from 'ant-design-vue';
+import { message, Spin } from 'antdv-next';
 
 import { authCallback } from '#/api';
 import { useAuthStore } from '#/store';

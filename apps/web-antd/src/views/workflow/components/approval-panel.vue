@@ -16,7 +16,7 @@ import { cn } from '@vben/utils';
 
 import { CopyOutlined } from '@ant-design/icons-vue';
 import { useClipboard } from '@vueuse/core';
-import { Card, Divider, message, TabPane, Tabs } from 'ant-design-vue';
+import { Card, Divider, message, TabPane, Tabs } from 'antdv-next';
 
 import { flowInfo } from '#/api/workflow/instance';
 import { getTaskByTaskId } from '#/api/workflow/task';

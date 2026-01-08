@@ -6,14 +6,14 @@
 import type {
   UploadFile,
   UploadListType,
-} from 'ant-design-vue/es/upload/interface';
+} from 'antdv-next/es/upload/interface';
 
 import type { BaseUploadProps, UploadEmits } from './props';
 
 import { $t, I18nT } from '@vben/locales';
 
 import { PlusOutlined, UploadOutlined } from '@ant-design/icons-vue';
-import { Image, ImagePreviewGroup, Upload } from 'ant-design-vue';
+import { Image, ImagePreviewGroup, Upload } from 'antdv-next';
 import { isFunction } from 'lodash-es';
 
 import { uploadApi } from '#/api';

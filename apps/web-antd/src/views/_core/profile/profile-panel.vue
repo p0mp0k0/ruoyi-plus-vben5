@@ -11,7 +11,7 @@ import {
   DescriptionsItem,
   Tag,
   Tooltip,
-} from 'ant-design-vue';
+} from 'antdv-next';
 
 import { userUpdateAvatar } from '#/api/system/profile';
 import { CropperAvatar } from '#/components/cropper';

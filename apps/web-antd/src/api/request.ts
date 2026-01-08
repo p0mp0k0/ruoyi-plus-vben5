@@ -27,7 +27,7 @@ import {
   RsaEncryption,
 } from '@vben/utils';
 
-import { message, Modal } from 'ant-design-vue';
+import { message, Modal } from 'antdv-next';
 import { isEmpty, isNull } from 'lodash-es';
 
 import { useAuthStore } from '#/store';

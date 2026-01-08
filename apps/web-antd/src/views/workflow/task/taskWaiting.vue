@@ -20,7 +20,7 @@ import {
   Spin,
   Tooltip,
   TreeSelect,
-} from 'ant-design-vue';
+} from 'antdv-next';
 import { cloneDeep, debounce } from 'lodash-es';
 
 import { categoryTree } from '#/api/workflow/category';

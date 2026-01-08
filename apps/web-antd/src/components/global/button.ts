@@ -1,7 +1,6 @@
 import { defineComponent, h } from 'vue';
 
-import { Button } from 'ant-design-vue';
-import buttonProps from 'ant-design-vue/es/button/buttonTypes';
+import { Button } from 'antdv-next';
 import { omit } from 'lodash-es';
 
 /**
@@ -9,12 +8,18 @@ import { omit } from 'lodash-es';
  */
 export const GhostButton = defineComponent({
   name: 'GhostButton',
-  props: omit(buttonProps(), ['type', 'ghost', 'size']),
+  props: omit({}, ['type', 'ghost', 'size']),
   setup(props, { attrs, slots }) {
     return () =>
       h(
         Button,
-        { ...props, ...attrs, type: 'primary', ghost: true, size: 'small' },
+        {
+          ...props,
+          ...attrs,
+          type: 'primary',
+          ghost: true,
+          size: 'small',
+        },
         slots,
       );
   },

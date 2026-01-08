@@ -5,7 +5,7 @@ import { ref } from 'vue';
 
 import { $t } from '@vben/locales';
 
-import { Modal } from 'ant-design-vue';
+import { Modal } from 'antdv-next';
 import { isFunction } from 'lodash-es';
 
 interface BeforeCloseDiffProps {

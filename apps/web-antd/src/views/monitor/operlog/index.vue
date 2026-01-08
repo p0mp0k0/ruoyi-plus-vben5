@@ -8,7 +8,7 @@ import type { OperationLog } from '#/api/monitor/operlog/model';
 import { Page, useVbenDrawer } from '@vben/common-ui';
 import { $t } from '@vben/locales';
 
-import { Modal, Space } from 'ant-design-vue';
+import { Modal, Space } from 'antdv-next';
 
 import {
   addSortParams,

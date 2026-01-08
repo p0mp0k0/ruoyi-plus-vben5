@@ -8,7 +8,7 @@ import type { VxeGridProps } from '#/adapter/vxe-table';
 import { Page, useVbenDrawer, useVbenModal } from '@vben/common-ui';
 import { getVxePopupContainer } from '@vben/utils';
 
-import { Modal, Popconfirm, Space } from 'ant-design-vue';
+import { Modal, Popconfirm, Space } from 'antdv-next';
 
 import { useVbenVxeGrid, vxeCheckboxChecked } from '#/adapter/vxe-table';
 import { cancelProcessApply } from '#/api/workflow/instance';

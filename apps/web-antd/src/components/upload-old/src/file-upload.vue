@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import type { UploadFile, UploadProps } from 'ant-design-vue';
-import type { UploadRequestOption } from 'ant-design-vue/lib/vc-upload/interface';
+import type { UploadFile, UploadProps } from 'antdv-next';
+import type { UploadRequestOption } from 'antdv-next/lib/vc-upload/interface';
 
 import type { AxiosProgressEvent, UploadApi } from '#/api';
 
@@ -9,7 +9,7 @@ import { ref, toRefs, watch } from 'vue';
 import { $t } from '@vben/locales';
 
 import { UploadOutlined } from '@ant-design/icons-vue';
-import { message, Upload } from 'ant-design-vue';
+import { message, Upload } from 'antdv-next';
 import { isArray, isFunction, isObject, isString } from 'lodash-es';
 
 import { uploadApi } from '#/api';

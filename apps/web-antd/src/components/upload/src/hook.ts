@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import type { UploadChangeParam, UploadFile } from 'ant-design-vue';
-import type { FileType } from 'ant-design-vue/es/upload/interface';
+import type { UploadChangeParam, UploadFile } from 'antdv-next';
+import type { FileType } from 'antdv-next/es/upload/interface';
 import type {
   RcFile,
   UploadRequestOption,
-} from 'ant-design-vue/es/vc-upload/interface';
+} from 'antdv-next/es/vc-upload/interface';
 
 import type { ModelRef } from 'vue';
 
@@ -22,7 +22,7 @@ import { computed, onUnmounted, ref, watch } from 'vue';
 
 import { $t } from '@vben/locales';
 
-import { message, Modal } from 'ant-design-vue';
+import { message, Modal } from 'antdv-next';
 import { isFunction, isString } from 'lodash-es';
 
 import { ossInfo } from '#/api/system/oss';

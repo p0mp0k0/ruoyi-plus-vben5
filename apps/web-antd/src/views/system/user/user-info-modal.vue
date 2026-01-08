@@ -6,7 +6,7 @@ import { computed, shallowRef } from 'vue';
 import { useVbenModal } from '@vben/common-ui';
 import { DictEnum } from '@vben/constants';
 
-import { Descriptions, DescriptionsItem, Tag } from 'ant-design-vue';
+import { Descriptions, Tag } from 'antdv-next';
 import dayjs from 'dayjs';
 import duration from 'dayjs/plugin/duration';
 import relativeTime from 'dayjs/plugin/relativeTime';
@@ -88,24 +88,24 @@ const diffLoginTime = computed(() => {
 <template>
   <BasicModal :footer="false" :fullscreen-button="false" title="用户信息">
     <Descriptions v-if="currentUser" size="small" :column="1" bordered>
-      <DescriptionsItem label="userId">
+      <Descriptions.Item label="userId">
         {{ currentUser.userId }}
-      </DescriptionsItem>
-      <DescriptionsItem label="用户状态">
+      </Descriptions.Item>
+      <Descriptions.Item label="用户状态">
         <component
           :is="renderDict(currentUser.status, DictEnum.SYS_NORMAL_DISABLE)"
         />
-      </DescriptionsItem>
-      <DescriptionsItem label="用户信息">
+      </Descriptions.Item>
+      <Descriptions.Item label="用户信息">
         {{ mixInfo }}
-      </DescriptionsItem>
-      <DescriptionsItem label="手机号">
+      </Descriptions.Item>
+      <Descriptions.Item label="手机号">
         {{ currentUser.phonenumber || '-' }}
-      </DescriptionsItem>
-      <DescriptionsItem label="邮箱">
+      </Descriptions.Item>
+      <Descriptions.Item label="邮箱">
         {{ currentUser.email || '-' }}
-      </DescriptionsItem>
-      <DescriptionsItem label="岗位">
+      </Descriptions.Item>
+      <Descriptions.Item label="岗位">
         <div
           v-if="currentUser.postNames.length > 0"
           class="flex flex-wrap gap-0.5"
@@ -115,8 +115,8 @@ const diffLoginTime = computed(() => {
           </Tag>
         </div>
         <span v-else>-</span>
-      </DescriptionsItem>
-      <DescriptionsItem label="权限">
+      </Descriptions.Item>
+      <Descriptions.Item label="权限">
         <div
           v-if="currentUser.roleNames.length > 0"
           class="flex flex-wrap gap-0.5"
@@ -126,14 +126,14 @@ const diffLoginTime = computed(() => {
           </Tag>
         </div>
         <span v-else>-</span>
-      </DescriptionsItem>
-      <DescriptionsItem label="创建时间">
+      </Descriptions.Item>
+      <Descriptions.Item label="创建时间">
         {{ currentUser.createTime }}
-      </DescriptionsItem>
-      <DescriptionsItem label="上次登录IP">
+      </Descriptions.Item>
+      <Descriptions.Item label="上次登录IP">
         {{ currentUser.loginIp ?? '-' }}
-      </DescriptionsItem>
-      <DescriptionsItem label="上次登录时间">
+      </Descriptions.Item>
+      <Descriptions.Item label="上次登录时间">
         <span>{{ currentUser.loginDate ?? '-' }}</span>
         <Tag
           class="ml-2"
@@ -143,10 +143,10 @@ const diffLoginTime = computed(() => {
         >
           {{ diffLoginTime }}前
         </Tag>
-      </DescriptionsItem>
-      <DescriptionsItem label="备注">
+      </Descriptions.Item>
+      <Descriptions.Item label="备注">
         {{ currentUser.remark ?? '-' }}
-      </DescriptionsItem>
+      </Descriptions.Item>
     </Descriptions>
   </BasicModal>
 </template>

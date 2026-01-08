@@ -7,7 +7,7 @@ import type {
   UploadChangeParam,
   UploadFile,
   UploadProps,
-} from 'ant-design-vue';
+} from 'antdv-next';
 
 import type { Component, Ref } from 'vue';
 
@@ -29,59 +29,59 @@ import { IconifyIcon } from '@vben/icons';
 import { $t } from '@vben/locales';
 import { isEmpty } from '@vben/utils';
 
-import { message, notification } from 'ant-design-vue';
+import { message, notification } from 'antdv-next';
 
 const AutoComplete = defineAsyncComponent(
-  () => import('ant-design-vue/es/auto-complete'),
+  () => import('antdv-next/es/auto-complete'),
 );
-const Button = defineAsyncComponent(() => import('ant-design-vue/es/button'));
+const Button = defineAsyncComponent(() => import('antdv-next/es/button'));
 const Checkbox = defineAsyncComponent(
-  () => import('ant-design-vue/es/checkbox'),
+  () => import('antdv-next/es/checkbox'),
 );
 const CheckboxGroup = defineAsyncComponent(() =>
-  import('ant-design-vue/es/checkbox').then((res) => res.CheckboxGroup),
+  import('antdv-next/es/checkbox').then((res) => res.CheckboxGroup),
 );
 const DatePicker = defineAsyncComponent(
-  () => import('ant-design-vue/es/date-picker'),
+  () => import('antdv-next/es/date-picker'),
 );
-const Divider = defineAsyncComponent(() => import('ant-design-vue/es/divider'));
-const Input = defineAsyncComponent(() => import('ant-design-vue/es/input'));
+const Divider = defineAsyncComponent(() => import('antdv-next/es/divider'));
+const Input = defineAsyncComponent(() => import('antdv-next/es/input'));
 const InputNumber = defineAsyncComponent(
-  () => import('ant-design-vue/es/input-number'),
+  () => import('antdv-next/es/input-number'),
 );
 const InputPassword = defineAsyncComponent(() =>
-  import('ant-design-vue/es/input').then((res) => res.InputPassword),
+  import('antdv-next/es/input').then((res) => res.InputPassword),
 );
 const Mentions = defineAsyncComponent(
-  () => import('ant-design-vue/es/mentions'),
+  () => import('antdv-next/es/mentions'),
 );
-const Radio = defineAsyncComponent(() => import('ant-design-vue/es/radio'));
+const Radio = defineAsyncComponent(() => import('antdv-next/es/radio'));
 const RadioGroup = defineAsyncComponent(() =>
-  import('ant-design-vue/es/radio').then((res) => res.RadioGroup),
+  import('antdv-next/es/radio').then((res) => res.RadioGroup),
 );
 const RangePicker = defineAsyncComponent(() =>
-  import('ant-design-vue/es/date-picker').then((res) => res.RangePicker),
+  import('antdv-next/es/date-picker').then((res) => res.RangePicker),
 );
-const Rate = defineAsyncComponent(() => import('ant-design-vue/es/rate'));
-const Select = defineAsyncComponent(() => import('ant-design-vue/es/select'));
-const Space = defineAsyncComponent(() => import('ant-design-vue/es/space'));
-const Switch = defineAsyncComponent(() => import('ant-design-vue/es/switch'));
+const Rate = defineAsyncComponent(() => import('antdv-next/es/rate'));
+const Select = defineAsyncComponent(() => import('antdv-next/es/select'));
+const Space = defineAsyncComponent(() => import('antdv-next/es/space'));
+const Switch = defineAsyncComponent(() => import('antdv-next/es/switch'));
 const Textarea = defineAsyncComponent(() =>
-  import('ant-design-vue/es/input').then((res) => res.Textarea),
+  import('antdv-next/es/input').then((res) => res.Textarea),
 );
 const TimePicker = defineAsyncComponent(
-  () => import('ant-design-vue/es/time-picker'),
+  () => import('antdv-next/es/time-picker'),
 );
 const TreeSelect = defineAsyncComponent(
-  () => import('ant-design-vue/es/tree-select'),
+  () => import('antdv-next/es/tree-select'),
 );
 const Cascader = defineAsyncComponent(
-  () => import('ant-design-vue/es/cascader'),
+  () => import('antdv-next/es/cascader'),
 );
-const Upload = defineAsyncComponent(() => import('ant-design-vue/es/upload'));
-const Image = defineAsyncComponent(() => import('ant-design-vue/es/image'));
+const Upload = defineAsyncComponent(() => import('antdv-next/es/upload'));
+const Image = defineAsyncComponent(() => import('antdv-next/es/image'));
 const PreviewGroup = defineAsyncComponent(() =>
-  import('ant-design-vue/es/image').then((res) => res.ImagePreviewGroup),
+  import('antdv-next/es/image').then((res) => res.ImagePreviewGroup),
 );
 
 const withDefaultPlaceholder = <T extends Component>(

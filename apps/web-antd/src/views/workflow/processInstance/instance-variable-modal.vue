@@ -4,7 +4,7 @@ import { ref } from 'vue';
 import { JsonPreview, useVbenModal } from '@vben/common-ui';
 import { cn, getPopupContainer } from '@vben/utils';
 
-import { message, Modal, Tag } from 'ant-design-vue';
+import { message, Modal, Tag } from 'antdv-next';
 
 import { useVbenForm } from '#/adapter/form';
 import { instanceVariable, updateFlowVariable } from '#/api/workflow/instance';

@@ -7,7 +7,7 @@ import { usePreferences } from '@vben/preferences';
 import { useVbenForm } from '@vben-core/form-ui';
 
 /**
- * 该插件提供了在表格中渲染第三方组件，用于兼容 ant-design-vue 组件库
+ * 该插件提供了在表格中渲染第三方组件，用于兼容 antdv-next 组件库
  *
  * 解决组件问题(如select浮层与失焦冲突)
  *

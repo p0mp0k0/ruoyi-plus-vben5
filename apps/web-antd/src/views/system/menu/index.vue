@@ -16,7 +16,7 @@ import {
   treeToList,
 } from '@vben/utils';
 
-import { Popconfirm, Space, Switch, Tooltip } from 'ant-design-vue';
+import { Popconfirm, Space, Switch, Tooltip } from 'antdv-next';
 
 import { useVbenVxeGrid } from '#/adapter/vxe-table';
 import { menuCascadeRemove, menuList, menuRemove } from '#/api/system/menu';

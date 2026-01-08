@@ -6,7 +6,7 @@ import { computed } from 'vue';
 import { VbenAvatar } from '@vben/common-ui';
 import { DictEnum } from '@vben/constants';
 
-import { Descriptions, DescriptionsItem, Tooltip } from 'ant-design-vue';
+import { Descriptions, DescriptionsItem, Tooltip } from 'antdv-next';
 
 import { renderDict } from '#/utils/render';
 

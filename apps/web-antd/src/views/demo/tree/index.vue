@@ -9,7 +9,7 @@ import { nextTick } from 'vue';
 import { Page, useVbenModal } from '@vben/common-ui';
 import { getPopupContainer, listToTree } from '@vben/utils';
 
-import { Popconfirm, Space } from 'ant-design-vue';
+import { Popconfirm, Space } from 'antdv-next';
 
 import { useVbenVxeGrid } from '#/adapter/vxe-table';
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Key } from 'ant-design-vue/es/vc-tree/interface';
+import type { Key } from 'antdv-next/es/vc-tree/interface';
 
 import type { Component } from 'vue';
 
@@ -20,7 +20,7 @@ import {
 } from '@vben/icons';
 
 import { useClipboard } from '@vueuse/core';
-import { Alert, Skeleton, Tree } from 'ant-design-vue';
+import { Alert, Skeleton, Tree } from 'antdv-next';
 
 import { previewCode } from '#/api/tool/gen';
 

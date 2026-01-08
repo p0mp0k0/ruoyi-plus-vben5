@@ -2,7 +2,7 @@
 import { IconifyIcon } from '@vben/icons';
 import { buildUUID } from '@vben/utils';
 
-import { Input } from 'ant-design-vue';
+import { Input } from 'antdv-next';
 
 defineOptions({ name: 'SecretInput' });
 

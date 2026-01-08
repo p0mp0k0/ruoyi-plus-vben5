@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { RadioChangeEvent } from 'ant-design-vue';
+import type { RadioChangeEvent } from 'antdv-next';
 
 import type { VbenFormProps } from '@vben/common-ui';
 import type { Recordable } from '@vben/types';
@@ -12,7 +12,7 @@ import { Page, useVbenModal } from '@vben/common-ui';
 import { $t } from '@vben/locales';
 import { getVxePopupContainer } from '@vben/utils';
 
-import { Modal, Popconfirm, RadioGroup, Space } from 'ant-design-vue';
+import { Modal, Popconfirm, RadioGroup, Space } from 'antdv-next';
 
 import { useVbenVxeGrid, vxeCheckboxChecked } from '#/adapter/vxe-table';
 import {

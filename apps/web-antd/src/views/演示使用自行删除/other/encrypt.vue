@@ -3,7 +3,7 @@ import { ref } from 'vue';
 
 import { JsonPreview, Page } from '@vben/common-ui';
 
-import { Alert, Card } from 'ant-design-vue';
+import { Alert, Card } from 'antdv-next';
 import dayjs from 'dayjs';
 
 import { requestClient } from '#/api/request';

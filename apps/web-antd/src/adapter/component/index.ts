@@ -13,7 +13,7 @@ import { computed, defineAsyncComponent, defineComponent, h, ref } from 'vue';
 import { ApiComponent, globalShareState, IconPicker } from '@vben/common-ui';
 import { $t } from '@vben/locales';
 
-import { notification } from 'ant-design-vue';
+import { notification } from 'antdv-next';
 
 import { FileUploadOld, ImageUploadOld } from '#/components/upload-old';
 
@@ -29,57 +29,68 @@ const ImageUpload = defineAsyncComponent(() =>
   import('#/components/upload').then((res) => res.ImageUpload),
 );
 
-const AutoComplete = defineAsyncComponent(
-  () => import('ant-design-vue/es/auto-complete'),
+const Button = defineAsyncComponent(
+  () => import('antdv-next/dist/button/index'),
 );
-const Button = defineAsyncComponent(() => import('ant-design-vue/es/button'));
 const Cascader = defineAsyncComponent(
-  () => import('ant-design-vue/es/cascader'),
+  () => import('antdv-next/dist/cascader/index'),
 );
 const Checkbox = defineAsyncComponent(
-  () => import('ant-design-vue/es/checkbox'),
+  () => import('antdv-next/dist/checkbox/index'),
 );
-const CheckboxGroup = defineAsyncComponent(() =>
-  import('ant-design-vue/es/checkbox').then((res) => res.CheckboxGroup),
+const CheckboxGroup = defineAsyncComponent(
+  () => import('antdv-next/dist/checkbox/Group'),
 );
 const DatePicker = defineAsyncComponent(
-  () => import('ant-design-vue/es/date-picker'),
+  () => import('antdv-next/dist/date-picker/index'),
 );
-const Divider = defineAsyncComponent(() => import('ant-design-vue/es/divider'));
-const Input = defineAsyncComponent(() => import('ant-design-vue/es/input'));
+const Divider = defineAsyncComponent(
+  () => import('antdv-next/dist/divider/index'),
+);
+const Input = defineAsyncComponent(() => import('antdv-next/dist/input/index'));
 const InputNumber = defineAsyncComponent(
-  () => import('ant-design-vue/es/input-number'),
+  () => import('antdv-next/dist/input-number/index'),
 );
-const InputPassword = defineAsyncComponent(() =>
-  import('ant-design-vue/es/input').then((res) => res.InputPassword),
+const InputPassword = defineAsyncComponent(
+  () => import('antdv-next/dist/input/Password'),
 );
 const Mentions = defineAsyncComponent(
-  () => import('ant-design-vue/es/mentions'),
+  () => import('antdv-next/dist/mentions/index'),
 );
-const Radio = defineAsyncComponent(() => import('ant-design-vue/es/radio'));
+const Radio = defineAsyncComponent(() => import('antdv-next/dist/radio/index'));
 const RadioGroup = defineAsyncComponent(() =>
-  import('ant-design-vue/es/radio').then((res) => res.RadioGroup),
+  import('antdv-next/dist/radio/index').then((res) => res.RadioGroup),
 );
 const RangePicker = defineAsyncComponent(() =>
-  import('ant-design-vue/es/date-picker').then((res) => res.RangePicker),
+  import('antdv-next/dist/date-picker/index').then(
+    (res) => res.DateRangePicker,
+  ),
 );
-const Rate = defineAsyncComponent(() => import('ant-design-vue/es/rate'));
-const Select = defineAsyncComponent(() => import('ant-design-vue/es/select'));
-const Space = defineAsyncComponent(() => import('ant-design-vue/es/space'));
-const Switch = defineAsyncComponent(() => import('ant-design-vue/es/switch'));
-const Textarea = defineAsyncComponent(() =>
-  import('ant-design-vue/es/input').then((res) => res.Textarea),
+const Rate = defineAsyncComponent(() => import('antdv-next/dist/rate/index'));
+const Select = defineAsyncComponent(
+  () => import('antdv-next/dist/select/index'),
+);
+const Space = defineAsyncComponent(() => import('antdv-next/dist/space/index'));
+const Switch = defineAsyncComponent(
+  () => import('antdv-next/dist/switch/index'),
+);
+const Textarea = defineAsyncComponent(
+  () => import('antdv-next/dist/input/TextArea'),
 );
 const TimePicker = defineAsyncComponent(
-  () => import('ant-design-vue/es/time-picker'),
+  () => import('antdv-next/dist/time-picker/index'),
 );
 const TimeRangePicker = defineAsyncComponent(() =>
-  import('ant-design-vue/es/time-picker').then((res) => res.TimeRangePicker),
+  import('antdv-next/dist/time-picker/index').then(
+    (res) => res.TimeRangePicker,
+  ),
 );
 const TreeSelect = defineAsyncComponent(
-  () => import('ant-design-vue/es/tree-select'),
+  () => import('antdv-next/dist/tree-select/index'),
 );
-const Upload = defineAsyncComponent(() => import('ant-design-vue/es/upload'));
+const Upload = defineAsyncComponent(
+  () => import('antdv-next/dist/upload/Upload'),
+);
 
 const withDefaultPlaceholder = <T extends Component>(
   component: T,
@@ -118,6 +129,7 @@ const withDefaultPlaceholder = <T extends Component>(
             ...props,
             ...attrs,
             ref: innerRef,
+            variant: 'outlined',
           },
           slots,
         );
@@ -202,7 +214,6 @@ async function initComponentAdapter() {
         visibleEvent: 'onVisibleChange',
       },
     ),
-    AutoComplete,
     Cascader: withDefaultPlaceholder(Cascader, 'select'),
     Checkbox,
     CheckboxGroup,
@@ -253,7 +264,7 @@ async function initComponentAdapter() {
     copyPreferencesSuccess: (title, content) => {
       notification.success({
         description: content,
-        message: title,
+        title,
         placement: 'bottomRight',
       });
     },

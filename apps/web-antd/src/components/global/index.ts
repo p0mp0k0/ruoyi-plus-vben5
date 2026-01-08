@@ -1,6 +1,6 @@
 import type { App } from 'vue';
 
-import { Button as AButton } from 'ant-design-vue';
+import { Button as AButton } from 'antdv-next';
 
 import { GhostButton } from './button';
 
@@ -8,7 +8,7 @@ import { GhostButton } from './button';
  * 全局组件注册
  */
 export function setupGlobalComponent(app: App) {
-  app.use(AButton);
+  app.component('AButton', AButton);
   // 表格操作列专用按钮
   app.component('GhostButton', GhostButton);
 }

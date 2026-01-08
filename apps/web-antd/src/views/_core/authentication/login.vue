@@ -10,7 +10,7 @@ import { AuthenticationLogin, z } from '@vben/common-ui';
 import { DEFAULT_TENANT_ID } from '@vben/constants';
 import { $t } from '@vben/locales';
 
-import { Input, Select } from 'ant-design-vue';
+import { Input, Select } from 'antdv-next';
 import { omit } from 'lodash-es';
 
 import { tenantList } from '#/api';

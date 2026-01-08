@@ -8,7 +8,7 @@ import { ref } from 'vue';
 import { useVbenModal } from '@vben/common-ui';
 import { $t as t } from '@vben/locales';
 
-import { Avatar, message, Space, Tooltip, Upload } from 'ant-design-vue';
+import { Avatar, message, Space, Tooltip, Upload } from 'antdv-next';
 import { isFunction } from 'lodash-es';
 
 import { dataURLtoBlob } from '#/utils/file/base64Conver';

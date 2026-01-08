@@ -10,7 +10,7 @@ import { useRouter } from 'vue-router';
 import { Page, useVbenModal } from '@vben/common-ui';
 import { getVxePopupContainer } from '@vben/utils';
 
-import { message, Modal, Popconfirm, Space } from 'ant-design-vue';
+import { message, Modal, Popconfirm, Space } from 'antdv-next';
 import dayjs from 'dayjs';
 
 import { useVbenVxeGrid, vxeCheckboxChecked } from '#/adapter/vxe-table';

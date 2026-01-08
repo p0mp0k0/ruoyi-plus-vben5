@@ -3,7 +3,7 @@ import type { LeaveVO } from '../leave/api/model';
 
 import { computed, onMounted, shallowRef } from 'vue';
 
-import { Descriptions, DescriptionsItem, Skeleton } from 'ant-design-vue';
+import { Descriptions, DescriptionsItem, Skeleton } from 'antdv-next';
 import dayjs from 'dayjs';
 
 import { leaveInfo } from './api';

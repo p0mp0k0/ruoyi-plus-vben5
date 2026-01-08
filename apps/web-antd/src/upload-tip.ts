@@ -1,7 +1,7 @@
 import { onMounted } from 'vue';
 
 import { useLocalStorage } from '@vueuse/core';
-import { Modal } from 'ant-design-vue';
+import { Modal } from 'antdv-next';
 
 export function useUploadTip() {
   const readTip = useLocalStorage<boolean>('__upload_tip_read_5.4.0', false);

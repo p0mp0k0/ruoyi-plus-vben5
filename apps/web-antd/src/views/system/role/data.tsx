@@ -6,7 +6,7 @@ import { markRaw } from 'vue';
 import { DictEnum } from '@vben/constants';
 import { getPopupContainer } from '@vben/utils';
 
-import { Tag } from 'ant-design-vue';
+import { Tag } from 'antdv-next';
 
 import { DefaultSlot } from '#/components/global/slot';
 import { TreeSelectPanel } from '#/components/tree';

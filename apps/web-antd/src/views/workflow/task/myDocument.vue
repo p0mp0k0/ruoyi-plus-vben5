@@ -18,7 +18,7 @@ import {
   Popover,
   Spin,
   Tooltip,
-} from 'ant-design-vue';
+} from 'antdv-next';
 import { cloneDeep, debounce } from 'lodash-es';
 
 import { pageByCurrent } from '#/api/workflow/instance';

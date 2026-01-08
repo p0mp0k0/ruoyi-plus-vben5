@@ -4,7 +4,7 @@
 比如: 按钮下放目录 按钮下放菜单 按钮下放按钮
 -->
 <script setup lang="tsx">
-import type { RadioChangeEvent } from 'ant-design-vue';
+import type { RadioChangeEvent } from 'antdv-next';
 
 import type { MenuPermissionOption } from './data';
 
@@ -15,7 +15,7 @@ import { nextTick, onMounted, ref, shallowRef, watch } from 'vue';
 
 import { cloneDeep, findGroupParentIds } from '@vben/utils';
 
-import { Alert, Checkbox, RadioGroup, Space } from 'ant-design-vue';
+import { Alert, Checkbox, RadioGroup, Space } from 'antdv-next';
 import { uniq } from 'lodash-es';
 
 import { useVbenVxeGrid } from '#/adapter/vxe-table';

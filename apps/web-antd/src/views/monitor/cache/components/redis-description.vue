@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { RedisInfo } from '#/api/monitor/cache';
 
-import { Descriptions, DescriptionsItem } from 'ant-design-vue';
+import { Descriptions, DescriptionsItem } from 'antdv-next';
 
 interface IRedisInfo extends RedisInfo {
   dbSize: string;

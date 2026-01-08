@@ -22,7 +22,7 @@ import {
   Popconfirm,
   Space,
   Tooltip,
-} from 'ant-design-vue';
+} from 'antdv-next';
 
 import { useVbenVxeGrid } from '#/adapter/vxe-table';
 import {

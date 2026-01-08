@@ -3,7 +3,7 @@ import type { VxeGridProps } from '#/adapter/vxe-table';
 
 import { Page, useVbenModal } from '@vben/common-ui';
 
-import { Space } from 'ant-design-vue';
+import { Space } from 'antdv-next';
 
 import { useVbenVxeGrid } from '#/adapter/vxe-table';
 

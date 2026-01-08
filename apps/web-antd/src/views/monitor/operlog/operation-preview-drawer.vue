@@ -6,7 +6,7 @@ import { computed, shallowRef } from 'vue';
 import { useVbenDrawer } from '@vben/common-ui';
 import { DictEnum } from '@vben/constants';
 
-import { Descriptions, DescriptionsItem, Tag } from 'ant-design-vue';
+import { Descriptions, DescriptionsItem, Tag } from 'antdv-next';
 
 import {
   renderDict,

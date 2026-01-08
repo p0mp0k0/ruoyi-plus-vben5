@@ -3,7 +3,7 @@ import { computed, ref } from 'vue';
 
 import { $t } from '@vben/locales';
 
-import { Modal, Switch } from 'ant-design-vue';
+import { Modal, Switch } from 'antdv-next';
 import { isFunction } from 'lodash-es';
 
 type CheckedType = boolean | number | string;

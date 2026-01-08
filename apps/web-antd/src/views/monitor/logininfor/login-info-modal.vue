@@ -6,7 +6,7 @@ import { ref } from 'vue';
 import { useVbenModal } from '@vben/common-ui';
 import { DictEnum } from '@vben/constants';
 
-import { Descriptions, DescriptionsItem } from 'ant-design-vue';
+import { Descriptions, DescriptionsItem } from 'antdv-next';
 
 import { renderBrowserIcon, renderDict, renderOsIcon } from '#/utils/render';
 

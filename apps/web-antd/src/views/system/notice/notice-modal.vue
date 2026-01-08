@@ -3,7 +3,7 @@
 该文件作为例子 使用原生表单而非useVbenForm
 -->
 <script setup lang="ts">
-import type { RuleObject } from 'ant-design-vue/es/form';
+import type { RuleObject } from 'antdv-next/es/form';
 
 import { computed, ref } from 'vue';
 
@@ -12,7 +12,7 @@ import { DictEnum } from '@vben/constants';
 import { $t } from '@vben/locales';
 import { cloneDeep } from '@vben/utils';
 
-import { Form, FormItem, Input, RadioGroup } from 'ant-design-vue';
+import { Form, FormItem, Input, RadioGroup } from 'antdv-next';
 import { pick } from 'lodash-es';
 
 import { noticeAdd, noticeInfo, noticeUpdate } from '#/api/system/notice';

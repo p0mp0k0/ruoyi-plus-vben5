@@ -7,7 +7,7 @@ import type { Notice } from '#/api/system/notice/model';
 import { Page, useVbenModal } from '@vben/common-ui';
 import { getVxePopupContainer } from '@vben/utils';
 
-import { Modal, Popconfirm, Space } from 'ant-design-vue';
+import { Modal, Popconfirm, Space } from 'antdv-next';
 
 import { useVbenVxeGrid, vxeCheckboxChecked } from '#/adapter/vxe-table';
 import { noticeList, noticeRemove } from '#/api/system/notice';

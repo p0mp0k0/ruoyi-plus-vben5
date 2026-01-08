@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 
-import { Tabs } from 'ant-design-vue';
+import { Tabs } from 'antdv-next';
 
 import Browser from './pages/browser.vue';
 import Device from './pages/device.vue';

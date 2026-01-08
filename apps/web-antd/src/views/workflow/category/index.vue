@@ -6,7 +6,7 @@ import { nextTick } from 'vue';
 import { Page, useVbenModal, type VbenFormProps } from '@vben/common-ui';
 import { getVxePopupContainer } from '@vben/utils';
 
-import { Popconfirm, Space } from 'ant-design-vue';
+import { Popconfirm, Space } from 'antdv-next';
 
 import { useVbenVxeGrid, type VxeGridProps } from '#/adapter/vxe-table';
 import { categoryList, categoryRemove } from '#/api/workflow/category';

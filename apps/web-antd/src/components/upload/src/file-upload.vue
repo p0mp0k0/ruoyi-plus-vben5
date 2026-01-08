@@ -3,7 +3,7 @@
 去除使用`file-type`库进行文件类型检测 在Safari无法使用
 -->
 <script setup lang="ts">
-import type { UploadListType } from 'ant-design-vue/es/upload/interface';
+import type { UploadListType } from 'antdv-next/es/upload/interface';
 
 import type { BaseUploadProps, UploadEmits } from './props';
 
@@ -12,7 +12,7 @@ import { computed } from 'vue';
 import { $t, I18nT } from '@vben/locales';
 
 import { InboxOutlined, UploadOutlined } from '@ant-design/icons-vue';
-import { Upload } from 'ant-design-vue';
+import { Upload } from 'antdv-next';
 
 import { uploadApi } from '#/api';
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { TabPane, Tabs } from 'ant-design-vue';
+import { TabPane, Tabs } from 'antdv-next';
 
 import AccountBind from './components/account-bind.vue';
 import BaseSetting from './components/base-setting.vue';

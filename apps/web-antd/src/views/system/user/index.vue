@@ -20,7 +20,7 @@ import {
   Modal,
   Popconfirm,
   Space,
-} from 'ant-design-vue';
+} from 'antdv-next';
 
 import { useVbenVxeGrid, vxeCheckboxChecked } from '#/adapter/vxe-table';
 import {

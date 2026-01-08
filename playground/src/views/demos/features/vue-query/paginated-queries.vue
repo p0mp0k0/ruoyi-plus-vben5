@@ -4,7 +4,7 @@ import type { Ref } from 'vue';
 import type { IProducts } from './typing';
 
 import { keepPreviousData, useQuery } from '@tanstack/vue-query';
-import { Button } from 'ant-design-vue';
+import { Button } from 'antdv-next';
 import { ref } from 'vue';
 
 const LIMIT = 10;

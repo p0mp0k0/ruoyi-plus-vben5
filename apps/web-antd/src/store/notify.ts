@@ -6,7 +6,7 @@ import { SvgMessageUrl } from '@vben/icons';
 import { $t } from '@vben/locales';
 import { useUserStore } from '@vben/stores';
 
-import { Modal, notification } from 'ant-design-vue';
+import { Modal, notification } from 'antdv-next';
 import dayjs from 'dayjs';
 import { defineStore } from 'pinia';
 
