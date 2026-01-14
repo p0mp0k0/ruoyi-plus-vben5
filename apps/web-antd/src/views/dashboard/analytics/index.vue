@@ -91,6 +91,7 @@ const loading = ref(true);
 
     <Spin :spinning="loading">
       <MarkdownPreviewer
+        class="mb-4"
         v-model:value="md"
         @mounted="() => (loading = false)"
       />
