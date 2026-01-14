@@ -6,6 +6,7 @@ import {
   AnalysisChartCard,
   AnalysisChartsTabs,
   AnalysisOverview,
+  MarkdownPreviewer,
 } from '@vben/common-ui';
 import {
   SvgBellIcon,
@@ -14,13 +15,14 @@ import {
   SvgDownloadIcon,
 } from '@vben/icons';
 
-import { Alert } from 'antdv-next';
+import { Alert, notification } from 'antdv-next';
 
 import AnalyticsTrends from './analytics-trends.vue';
 import AnalyticsVisitsData from './analytics-visits-data.vue';
 import AnalyticsVisitsSales from './analytics-visits-sales.vue';
 import AnalyticsVisitsSource from './analytics-visits-source.vue';
 import AnalyticsVisits from './analytics-visits.vue';
+import md from './change.md?raw';
 
 const overviewItems: AnalysisOverviewItem[] = [
   {
@@ -63,16 +65,27 @@ const chartTabs: TabOption[] = [
     value: 'visits',
   },
 ];
+
+function handleClick() {
+  notification.success({
+    title: '新的 notification 样式',
+    description: 'ant design',
+  });
+}
 </script>
 
 <template>
   <div class="p-5">
-    <Alert
-      class="mb-5"
-      :show-icon="true"
-      type="success"
-      title="该分支使用antdv-next替代不维护的ant-design-vue"
-    />
+    <Alert class="mb-5" :show-icon="true" type="success">
+      <template #message>
+        该分支使用antdv-next替代不维护的ant-design-vue
+        <a-button class="ml-2" size="small" type="primary" @click="handleClick">
+          疯狂点击
+        </a-button>
+      </template>
+    </Alert>
+
+    <MarkdownPreviewer v-model:value="md" />
 
     <AnalysisOverview :items="overviewItems" />
     <AnalysisChartsTabs :tabs="chartTabs" class="mt-5">
