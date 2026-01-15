@@ -10,6 +10,7 @@ import { computed, ref } from 'vue';
 
 import { useAccess } from '@vben/access';
 import { Page, useVbenDrawer, useVbenModal } from '@vben/common-ui';
+import { EnableStatus, SUPERADMIN_USER_ID } from '@vben/constants';
 import { $t } from '@vben/locales';
 import { preferences } from '@vben/preferences';
 
@@ -204,7 +205,7 @@ async function handleChangeStatus(checked: boolean, row: User) {
   console.log(checked);
   await userStatusChange({
     userId: row.userId,
-    status: checked ? '0' : '1',
+    status: checked ? EnableStatus.Enable : EnableStatus.Disable,
   });
 }
 </script>
@@ -258,16 +259,17 @@ async function handleChangeStatus(checked: boolean, row: User) {
         <template #status="{ row }">
           <!-- value只能接收boolean值 -->
           <ApiSwitch
-            :value="row.status === '0'"
+            :value="row.status === EnableStatus.Enable"
             :api="(checked) => handleChangeStatus(checked, row)"
             :disabled="
-              row.userId === 1 || !hasAccessByCodes(['system:user:edit'])
+              row.userId === SUPERADMIN_USER_ID ||
+              !hasAccessByCodes(['system:user:edit'])
             "
             @reload="() => tableApi.query()"
           />
         </template>
         <template #action="{ row }">
-          <template v-if="row.userId !== 1">
+          <template v-if="row.userId !== SUPERADMIN_USER_ID">
             <Space>
               <ghost-button
                 v-access:code="['system:user:edit']"

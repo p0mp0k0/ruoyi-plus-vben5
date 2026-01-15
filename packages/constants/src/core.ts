@@ -36,3 +36,16 @@ export const BUSINESS_SUCCESS_CODE = 200;
  * 未授权 状态码(登录超时)
  */
 export const UNAUTHORIZED_CODE = 401;
+
+/**
+ * 超管用户ID
+ */
+export const SUPERADMIN_USER_ID = 1;
+
+/**
+ * 对应 字典-S系统开关的状态
+ */
+export const EnableStatus = {
+  Enable: '0',
+  Disable: '1',
+};
