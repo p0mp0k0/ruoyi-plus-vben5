@@ -129,7 +129,6 @@ const withDefaultPlaceholder = <T extends Component>(
             ...props,
             ...attrs,
             ref: innerRef,
-            variant: 'outlined',
           },
           slots,
         );
