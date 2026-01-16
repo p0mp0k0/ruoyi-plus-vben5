@@ -8,6 +8,7 @@ import { computed } from 'vue';
 
 import { useAccess } from '@vben/access';
 import { Fallback, Page, useVbenDrawer } from '@vben/common-ui';
+import { EnableStatus } from '@vben/constants';
 
 import { Popconfirm, Space } from 'antdv-next';
 
@@ -18,7 +19,7 @@ import {
   packageList,
   packageRemove,
 } from '#/api/system/tenant-package';
-import { TableSwitch } from '#/components/table';
+import { ApiSwitch } from '#/components/global';
 import { commonDownloadExcel } from '#/utils/file/download';
 
 import { columns, querySchema } from './data';
@@ -120,6 +121,13 @@ const { hasAccessByCodes, hasAccessByRoles } = useAccess();
 const isSuperAdmin = computed(() => {
   return hasAccessByRoles(['superadmin']);
 });
+
+async function handleChangeStatus(checked: boolean, row: TenantPackage) {
+  await packageChangeStatus({
+    packageId: row.packageId,
+    status: checked ? EnableStatus.Enable : EnableStatus.Disable,
+  });
+}
 </script>
 
 <template>
@@ -152,9 +160,9 @@ const isSuperAdmin = computed(() => {
         </Space>
       </template>
       <template #status="{ row }">
-        <TableSwitch
+        <ApiSwitch
           v-model:value="row.status"
-          :api="() => packageChangeStatus(row)"
+          :api="(checked) => handleChangeStatus(checked, row)"
           :disabled="!hasAccessByCodes(['system:tenantPackage:edit'])"
           @reload="tableApi.query()"
         />

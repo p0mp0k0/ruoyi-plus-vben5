@@ -8,6 +8,7 @@ import { computed } from 'vue';
 
 import { useAccess } from '@vben/access';
 import { Fallback, Page, useVbenDrawer } from '@vben/common-ui';
+import { EnableStatus } from '@vben/constants';
 
 import { Popconfirm, Space } from 'antdv-next';
 
@@ -21,7 +22,7 @@ import {
   tenantStatusChange,
   tenantSyncPackage,
 } from '#/api/system/tenant';
-import { TableSwitch } from '#/components/table';
+import { ApiSwitch } from '#/components/global';
 import { useTenantStore } from '#/store/tenant';
 import { commonDownloadExcel } from '#/utils/file/download';
 
@@ -154,6 +155,15 @@ function handleSyncTenantConfig() {
     },
   });
 }
+
+async function handleChangeStatus(checked: boolean, row: Tenant) {
+  console.log(checked);
+  await tenantStatusChange({
+    id: row.id,
+    tenantId: row.tenantId,
+    status: checked ? EnableStatus.Enable : EnableStatus.Disable,
+  });
+}
 </script>
 
 <template>
@@ -198,9 +208,9 @@ function handleSyncTenantConfig() {
         </Space>
       </template>
       <template #status="{ row }">
-        <TableSwitch
-          v-model:value="row.status"
-          :api="() => tenantStatusChange(row)"
+        <ApiSwitch
+          :value="row.status === EnableStatus.Enable"
+          :api="(checked) => handleChangeStatus(checked, row)"
           :disabled="row.id === 1 || !hasAccessByCodes(['system:tenant:edit'])"
           @reload="tableApi.query()"
         />
