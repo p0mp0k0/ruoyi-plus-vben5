@@ -73,7 +73,7 @@ const loading = ref(false);
  * @param tenantId tenantId
  * @param option 当前option
  */
-const onSelected: SelectEmits['onSelect'] = async (
+const handleSelect: SelectEmits['onSelect'] = async (
   tenantId: string,
   option: any,
 ) => {
@@ -103,7 +103,7 @@ const onSelected: SelectEmits['onSelect'] = async (
   }
 };
 
-async function onDeselect() {
+async function handleClear() {
   try {
     loading.value = true;
 
@@ -148,8 +148,8 @@ function filterOption(input: string, option: TenantOption) {
       allow-clear
       class="w-60"
       show-search
-      @deselect="onDeselect"
-      @select="onSelected"
+      @clear="handleClear"
+      @select="handleSelect"
     >
       <template v-if="loading" #suffixIcon>
         <Spin size="small" spinning />
