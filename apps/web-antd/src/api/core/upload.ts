@@ -1,6 +1,7 @@
 import type { AxiosRequestConfig } from '@vben/request';
 
 import { alovaInstance } from '#/utils/http';
+import { ContentTypeEnum } from '#/utils/http/helper';
 
 /**
  * Axios上传进度事件
@@ -33,7 +34,12 @@ export function uploadApi(
   return alovaInstance.post<UploadResult>(
     '/resource/oss/upload',
     { file, ...otherData },
-    { timeout: 60_000 },
+    {
+      timeout: 60_000,
+      headers: {
+        'Content-Type': ContentTypeEnum.FORM_DATA,
+      },
+    },
   );
 }
 

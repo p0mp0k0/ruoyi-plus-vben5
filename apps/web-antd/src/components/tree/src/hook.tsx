@@ -35,7 +35,7 @@ export function useFullScreenGuide() {
       target: () =>
         document.querySelector(
           'div#menu-select-table .vxe-tools--operate > button[title="全屏"]',
-        )!,
+        )! as HTMLElement,
     },
   ];
 

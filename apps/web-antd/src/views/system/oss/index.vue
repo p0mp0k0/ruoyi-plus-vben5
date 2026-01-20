@@ -30,6 +30,7 @@ import { columns, querySchema } from './data';
 import fallbackImageBase64 from './fallback-image.txt?raw';
 import fileUploadModal from './file-upload-modal.vue';
 import imageUploadModal from './image-upload-modal.vue';
+import uploadTestModal from './upload-test-modal.vue';
 
 const formOptions: VbenFormProps = {
   commonConfig: {
@@ -213,6 +214,9 @@ const [ImageUploadModal, imageUploadApi] = useVbenModal({
 const [FileUploadModal, fileUploadApi] = useVbenModal({
   connectedComponent: fileUploadModal,
 });
+const [UploadTestModal, uploadTestApi] = useVbenModal({
+  connectedComponent: uploadTestModal,
+});
 </script>
 
 <template>
@@ -249,6 +253,12 @@ const [FileUploadModal, fileUploadApi] = useVbenModal({
             @click="imageUploadApi.open"
           >
             图片上传
+          </a-button>
+          <a-button
+            v-access:code="['system:oss:upload']"
+            @click="uploadTestApi.open"
+          >
+            测试上传
           </a-button>
         </Space>
       </template>
@@ -303,5 +313,6 @@ const [FileUploadModal, fileUploadApi] = useVbenModal({
     </BasicTable>
     <ImageUploadModal @reload="tableApi.query" />
     <FileUploadModal @reload="tableApi.query" />
+    <UploadTestModal />
   </Page>
 </template>
