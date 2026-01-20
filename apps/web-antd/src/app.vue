@@ -36,7 +36,7 @@ useUploadTip();
 </script>
 
 <template>
-  <ConfigProvider :locale="antdLocale" :theme="tokenTheme" variant="outlined">
+  <ConfigProvider :locale="antdLocale" :theme="tokenTheme">
     <App>
       <RouterView />
       <PopupContext />
