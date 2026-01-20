@@ -92,7 +92,7 @@ async function handleForceOffline(row: OnlineUser) {
           placement="left"
           @confirm="handleForceOffline(row)"
         >
-          <ghost-button danger>强制下线</ghost-button>
+          <action-button danger>强制下线</action-button>
         </Popconfirm>
       </template>
     </BasicTable>

@@ -184,21 +184,21 @@ function handleDownloadExcel() {
       </template>
       <template #action="{ row }">
         <Space>
-          <ghost-button @click.stop="handlePreview(row)">
+          <action-button @click.stop="handlePreview(row)">
             {{ $t('pages.common.info') }}
-          </ghost-button>
+          </action-button>
           <Popconfirm
             placement="left"
             title="确认删除?"
             @confirm="() => handleDelete(row)"
           >
-            <ghost-button
+            <action-button
               danger
               v-access:code="['monitor:logininfor:remove']"
               @click.stop=""
             >
               {{ $t('pages.common.delete') }}
-            </ghost-button>
+            </action-button>
           </Popconfirm>
         </Space>
       </template>

@@ -161,24 +161,24 @@ function handleDownloadExcel() {
       </template>
       <template #action="{ row }">
         <Space>
-          <GhostButton
+          <action-button
             v-access:code="['system:post:edit']"
             @click="handleEdit(row)"
           >
             {{ $t('pages.common.edit') }}
-          </GhostButton>
+          </action-button>
           <Popconfirm
             placement="left"
             title="确认删除？"
             @confirm="handleDelete(row)"
           >
-            <GhostButton
+            <action-button
               danger
               v-access:code="['system:post:remove']"
               @click.stop=""
             >
               {{ $t('pages.common.delete') }}
-            </GhostButton>
+            </action-button>
           </Popconfirm>
         </Space>
       </template>

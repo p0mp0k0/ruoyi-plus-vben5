@@ -93,9 +93,9 @@ function handleSendSingle(userId: string) {
         </Space>
       </template>
       <template #action="{ row }">
-        <ghost-button @click="handleSendSingle(row.userId)">
+        <action-button @click="handleSendSingle(row.userId)">
           发送消息
-        </ghost-button>
+        </action-button>
       </template>
     </BasicTable>
     <SendMsgModal />

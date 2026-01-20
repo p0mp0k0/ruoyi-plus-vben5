@@ -289,24 +289,24 @@ const [UploadTestModal, uploadTestApi] = useVbenModal({
       </template>
       <template #action="{ row }">
         <Space>
-          <ghost-button
+          <action-button
             v-access:code="['system:oss:download']"
             @click="handleDownload(row)"
           >
             {{ $t('pages.common.download') }}
-          </ghost-button>
+          </action-button>
           <Popconfirm
             placement="left"
             title="确认删除？"
             @confirm="handleDelete(row)"
           >
-            <ghost-button
+            <action-button
               danger
               v-access:code="['system:oss:remove']"
               @click.stop=""
             >
               {{ $t('pages.common.delete') }}
-            </ghost-button>
+            </action-button>
           </Popconfirm>
         </Space>
       </template>

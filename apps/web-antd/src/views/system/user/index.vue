@@ -271,24 +271,24 @@ async function handleChangeStatus(checked: boolean, row: User) {
         <template #action="{ row }">
           <template v-if="row.userId !== SUPERADMIN_USER_ID">
             <Space>
-              <ghost-button
+              <action-button
                 v-access:code="['system:user:edit']"
                 @click.stop="handleEdit(row)"
               >
                 {{ $t('pages.common.edit') }}
-              </ghost-button>
+              </action-button>
               <Popconfirm
                 placement="left"
                 title="确认删除？"
                 @confirm="handleDelete(row)"
               >
-                <ghost-button
+                <action-button
                   danger
                   v-access:code="['system:user:remove']"
                   @click.stop=""
                 >
                   {{ $t('pages.common.delete') }}
-                </ghost-button>
+                </action-button>
               </Popconfirm>
             </Space>
             <Dropdown

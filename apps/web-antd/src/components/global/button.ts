@@ -6,8 +6,8 @@ import { omit } from 'lodash-es';
 /**
  * 表格操作列按钮专用
  */
-export const GhostButton = defineComponent({
-  name: 'GhostButton',
+export const ActionButton = defineComponent({
+  name: 'ActionButton',
   props: omit({}, ['type', 'ghost', 'size']),
   setup(props, { attrs, slots }) {
     return () =>

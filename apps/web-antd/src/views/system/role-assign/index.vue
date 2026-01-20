@@ -135,13 +135,13 @@ function handleMultipleAuthCancel() {
           placement="left"
           @confirm="handleAuthCancel(row)"
         >
-          <ghost-button
+          <action-button
             danger
             v-access:code="['system:role:remove']"
             @click.stop=""
           >
             取消授权
-          </ghost-button>
+          </action-button>
         </Popconfirm>
       </template>
     </BasicTable>

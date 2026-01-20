@@ -217,37 +217,37 @@ async function handleChangeStatus(checked: boolean, row: Tenant) {
       </template>
       <template #action="{ row }">
         <Space v-if="row.id !== 1">
-          <ghost-button
+          <action-button
             v-access:code="['system:tenant:edit']"
             @click="handleEdit(row)"
           >
             {{ $t('pages.common.edit') }}
-          </ghost-button>
+          </action-button>
           <Popconfirm
             :title="`确认同步[${row.companyName}]的套餐吗?`"
             placement="left"
             @confirm="handleSync(row)"
           >
-            <ghost-button
+            <action-button
               variant="link"
               color="green"
               v-access:code="['system:tenant:edit']"
             >
               {{ $t('pages.common.sync') }}
-            </ghost-button>
+            </action-button>
           </Popconfirm>
           <Popconfirm
             placement="left"
             title="确认删除？"
             @confirm="handleDelete(row)"
           >
-            <ghost-button
+            <action-button
               danger
               v-access:code="['system:tenant:remove']"
               @click.stop=""
             >
               {{ $t('pages.common.delete') }}
-            </ghost-button>
+            </action-button>
           </Popconfirm>
         </Space>
       </template>

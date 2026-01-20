@@ -120,32 +120,32 @@ function collapseAll() {
       </template>
       <template #action="{ row }">
         <Space>
-          <ghost-button
+          <action-button
             v-access:code="['workflow:category:edit']"
             @click.stop="handleEdit(row)"
           >
             {{ $t('pages.common.edit') }}
-          </ghost-button>
-          <ghost-button
+          </action-button>
+          <action-button
             variant="link"
             color="green"
             v-access:code="['workflow:category:edit']"
             @click.stop="handleAdd(row)"
           >
             {{ $t('pages.common.add') }}
-          </ghost-button>
+          </action-button>
           <Popconfirm
             placement="left"
             title="确认删除？"
             @confirm="handleDelete(row)"
           >
-            <ghost-button
+            <action-button
               danger
               v-access:code="['workflow:category:remove']"
               @click.stop=""
             >
               {{ $t('pages.common.delete') }}
-            </ghost-button>
+            </action-button>
           </Popconfirm>
         </Space>
       </template>

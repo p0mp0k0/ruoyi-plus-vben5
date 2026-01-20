@@ -171,12 +171,12 @@ function handleDownloadExcel() {
         </Space>
       </template>
       <template #action="{ row }">
-        <ghost-button
+        <action-button
           v-access:code="['monitor:operlog:list']"
           @click.stop="handlePreview(row)"
         >
           {{ $t('pages.common.preview') }}
-        </ghost-button>
+        </action-button>
       </template>
     </BasicTable>
     <OperationPreviewDrawer />

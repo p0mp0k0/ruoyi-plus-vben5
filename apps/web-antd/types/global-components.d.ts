@@ -5,7 +5,7 @@ import { Button } from 'antdv-next/dist/button/Button';
 declare module 'vue' {
   export interface GlobalComponents {
     AButton: typeof Button;
-    GhostButton: typeof Button;
+    ActionButton: typeof Button;
   }
 }
 

@@ -201,36 +201,36 @@ async function handleChangeStatus(checked: boolean, row: Role) {
           "
         >
           <Space>
-            <ghost-button
+            <action-button
               v-access:code="['system:role:edit']"
               @click.stop="handleEdit(row)"
             >
               {{ $t('pages.common.edit') }}
-            </ghost-button>
-            <ghost-button
+            </action-button>
+            <action-button
               v-access:code="['system:role:edit']"
               @click.stop="handleAuthEdit(row)"
             >
               权限
-            </ghost-button>
-            <ghost-button
+            </action-button>
+            <action-button
               v-access:code="['system:role:edit']"
               @click.stop="handleAssignRole(row)"
             >
               分配
-            </ghost-button>
+            </action-button>
             <Popconfirm
               placement="left"
               title="确认删除？"
               @confirm="handleDelete(row)"
             >
-              <ghost-button
+              <action-button
                 danger
                 v-access:code="['system:role:remove']"
                 @click.stop=""
               >
                 {{ $t('pages.common.delete') }}
-              </ghost-button>
+              </action-button>
             </Popconfirm>
           </Space>
         </template>

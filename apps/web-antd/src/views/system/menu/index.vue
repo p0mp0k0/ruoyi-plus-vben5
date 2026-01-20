@@ -221,15 +221,15 @@ const isAdmin = computed(() => {
       </template>
       <template #action="{ row }">
         <Space>
-          <ghost-button
+          <action-button
             v-access:code="['system:menu:edit']"
             v-access:role="['superadmin']"
             @click="handleEdit(row)"
           >
             {{ $t('pages.common.edit') }}
-          </ghost-button>
+          </action-button>
           <!-- '按钮类型'无法再添加子菜单 -->
-          <ghost-button
+          <action-button
             v-if="row.menuType !== 'F'"
             variant="link"
             color="green"
@@ -238,20 +238,20 @@ const isAdmin = computed(() => {
             @click="handleSubAdd(row)"
           >
             {{ $t('pages.common.add') }}
-          </ghost-button>
+          </action-button>
           <Popconfirm
             placement="left"
             :title="removeConfirmTitle(row)"
             @confirm="handleDelete(row)"
           >
-            <ghost-button
+            <action-button
               danger
               v-access:code="['system:menu:remove']"
               v-access:role="['superadmin']"
               @click.stop=""
             >
               {{ $t('pages.common.delete') }}
-            </ghost-button>
+            </action-button>
           </Popconfirm>
         </Space>
       </template>
