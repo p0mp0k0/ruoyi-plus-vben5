@@ -24,6 +24,5 @@
 
 ## 已知问题
 
-- 夜间模式切换 antd组件不会跟随切换(dev是正常的 打包后会有问题) 等待antdv-next更新
 - message的duration无效
-- 打包后修改primary无效(dev是正常的)
+- 图片上传(Uplaod) > 图片预览无效
