@@ -8,7 +8,6 @@ import { App, ConfigProvider, theme } from 'antdv-next';
 
 import { antdLocale } from '#/locales';
 
-import { useUploadTip } from './upload-tip';
 import { PopupContext } from './utils/context';
 
 defineOptions({ name: 'App' });
@@ -31,8 +30,6 @@ const tokenTheme = computed(() => {
     token: tokens,
   };
 });
-
-useUploadTip();
 </script>
 
 <template>
