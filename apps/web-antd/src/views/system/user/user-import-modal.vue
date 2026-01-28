@@ -9,7 +9,7 @@ import { InboxOutlined } from '@antdv-next/icons';
 import { Switch, Upload } from 'antdv-next';
 
 import { downloadImportTemplate, userImportData } from '#/api/system/user';
-import { commonDownloadExcel } from '#/utils/file/download';
+import { useBlobExport } from '#/utils/file/export';
 
 const emit = defineEmits<{ reload: [] }>();
 
@@ -62,6 +62,11 @@ function handleCancel() {
   fileList.value = [];
   checked.value = false;
 }
+
+const { exportBlob, exportLoading } = useBlobExport(downloadImportTemplate);
+async function handleExport() {
+  exportBlob({ data: {}, fileName: '用户导入模板.xlsx' });
+}
 </script>
 
 <template>
@@ -89,7 +94,9 @@ function handleCancel() {
         <span>允许导入xlsx, xls文件</span>
         <a-button
           type="link"
-          @click="commonDownloadExcel(downloadImportTemplate, '用户导入模板')"
+          :loading="exportLoading"
+          :disabled="exportLoading"
+          @click="handleExport"
         >
           <div class="flex items-center gap-[4px]">
             <span class="icon-[vscode-icons--file-type-excel]"></span>

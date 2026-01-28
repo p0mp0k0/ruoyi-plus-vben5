@@ -12,9 +12,8 @@ import { getPopupContainer } from '@vben/utils';
 import { Popconfirm, Space } from 'antdv-next';
 
 import { useVbenVxeGrid, vxeCheckboxChecked } from '#/adapter/vxe-table';
-import { commonDownloadExcel } from '#/utils/file/download';
 
-import { demoExport, demoList, demoRemove } from './api';
+import { demoList, demoRemove } from './api';
 import { columns, querySchema } from './data';
 import demoModal from './demo-modal.vue';
 
@@ -105,18 +104,6 @@ function handleMultiDelete() {
       </template>
       <template #toolbar-tools>
         <Space>
-          <a-button
-            v-access:code="['system:demo:export']"
-            @click="
-              commonDownloadExcel(
-                demoExport,
-                '测试单数据',
-                tableApi.formApi.form.values,
-              )
-            "
-          >
-            {{ $t('pages.common.export') }}
-          </a-button>
           <a-button
             :disabled="!vxeCheckboxChecked(tableApi)"
             danger

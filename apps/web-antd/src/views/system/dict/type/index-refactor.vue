@@ -24,7 +24,7 @@ import {
   dictTypeRemove,
   refreshDictTypeCache,
 } from '#/api/system/dict/dict-type';
-import { commonDownloadExcel } from '#/utils/file/download';
+import { useBlobExport } from '#/utils/file/export';
 
 import { emitter } from '../mitt';
 import dictTypeModal from './dict-type-modal.vue';
@@ -109,10 +109,6 @@ async function handleReset() {
   await tableApi.query();
 }
 
-function handleDownloadExcel() {
-  commonDownloadExcel(dictTypeExport, '字典类型数据');
-}
-
 function handleRefreshCache() {
   window.modal.confirm({
     title: '提示',
@@ -125,6 +121,16 @@ function handleRefreshCache() {
       await tableApi.query();
     },
   });
+}
+
+const { exportBlob, exportLoading, buildExportFileName } =
+  useBlobExport(dictTypeExport);
+async function handleExport() {
+  // 构建表单请求参数
+  const formValues = await tableApi.formApi.getValues();
+  // 文件名
+  const fileName = buildExportFileName('字典类型数据');
+  exportBlob({ data: formValues, fileName });
 }
 
 const lastDictType = ref<string>('');
@@ -184,7 +190,9 @@ watch(searchValue, (value) => {
           <a-button
             v-access:code="['system:dict:export']"
             :icon="h(ExportOutlined)"
-            @click="handleDownloadExcel"
+            @click="handleExport"
+            :disabled="exportLoading"
+            :loading="exportLoading"
           />
         </Tooltip>
         <Tooltip :title="$t('pages.common.add')">

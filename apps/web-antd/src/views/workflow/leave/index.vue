@@ -11,7 +11,7 @@ import { Popconfirm, Space } from 'antdv-next';
 
 import { useVbenVxeGrid, vxeCheckboxChecked } from '#/adapter/vxe-table';
 import { cancelProcessApply } from '#/api/workflow/instance';
-import { commonDownloadExcel } from '#/utils/file/download';
+import { useBlobExport } from '#/utils/file/export';
 
 import { applyModal, flowInfoModal } from '../components';
 import { leaveExport, leaveList, leaveRemove } from './api';
@@ -135,16 +135,16 @@ function handleMultiDelete() {
   });
 }
 
-function handleDownloadExcel() {
-  commonDownloadExcel(
-    leaveExport,
-    '请假申请数据',
-    tableApi.formApi.form.values,
-    {
-      fieldMappingTime: formOptions.fieldMappingTime,
-    },
-  );
+const { exportBlob, exportLoading, buildExportFileName } =
+  useBlobExport(leaveExport);
+async function handleExport() {
+  // 构建表单请求参数
+  const formValues = await tableApi.formApi.getValues();
+  // 文件名
+  const fileName = buildExportFileName('请假申请数据');
+  exportBlob({ data: formValues, fileName });
 }
+
 const [FlowInfoModal, flowInfoModalApi] = useVbenModal({
   connectedComponent: flowInfoModal,
 });
@@ -162,7 +162,9 @@ function handleInfo(row: Required<LeaveForm>) {
         <Space>
           <a-button
             v-access:code="['workflow:leave:export']"
-            @click="handleDownloadExcel"
+            :loading="exportLoading"
+            :disabled="exportLoading"
+            @click="handleExport"
           >
             {{ $t('pages.common.export') }}
           </a-button>
