@@ -18,7 +18,7 @@ import {
   loginInfoRemove,
   userUnlock,
 } from '#/api/monitor/logininfo';
-import { commonDownloadExcel } from '#/utils/file/download';
+import { useBlobExport } from '#/utils/file/export';
 import { confirmDeleteModal } from '#/utils/modal';
 
 import { columns, querySchema } from './data';
@@ -134,15 +134,14 @@ async function handleUnlock() {
   tableApi.grid.clearCheckboxRow();
 }
 
-function handleDownloadExcel() {
-  commonDownloadExcel(
-    loginInfoExport,
-    '登录日志',
-    tableApi.formApi.form.values,
-    {
-      fieldMappingTime: formOptions.fieldMappingTime,
-    },
-  );
+const { exportBlob, exportLoading, buildExportFileName } =
+  useBlobExport(loginInfoExport);
+async function handleExport() {
+  // 构建表单请求参数
+  const formValues = await tableApi.formApi.getValues();
+  // 文件名
+  const fileName = buildExportFileName('登录日志');
+  exportBlob({ data: formValues, fileName });
 }
 </script>
 
@@ -159,7 +158,9 @@ function handleDownloadExcel() {
           </a-button>
           <a-button
             v-access:code="['monitor:logininfor:export']"
-            @click="handleDownloadExcel"
+            :loading="exportLoading"
+            :disabled="exportLoading"
+            @click="handleExport"
           >
             {{ $t('pages.common.export') }}
           </a-button>

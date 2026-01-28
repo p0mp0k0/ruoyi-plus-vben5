@@ -21,7 +21,7 @@ import {
   operLogExport,
   operLogList,
 } from '#/api/monitor/operlog';
-import { commonDownloadExcel } from '#/utils/file/download';
+import { useBlobExport } from '#/utils/file/export';
 import { confirmDeleteModal } from '#/utils/modal';
 
 import { columns, querySchema } from './data';
@@ -135,10 +135,14 @@ async function handleDelete() {
   });
 }
 
-function handleDownloadExcel() {
-  commonDownloadExcel(operLogExport, '操作日志', tableApi.formApi.form.values, {
-    fieldMappingTime: formOptions.fieldMappingTime,
-  });
+const { exportBlob, exportLoading, buildExportFileName } =
+  useBlobExport(operLogExport);
+async function handleExport() {
+  // 构建表单请求参数
+  const formValues = await tableApi.formApi.getValues();
+  // 文件名
+  const fileName = buildExportFileName('操作日志');
+  exportBlob({ data: formValues, fileName });
 }
 </script>
 
@@ -155,7 +159,9 @@ function handleDownloadExcel() {
           </a-button>
           <a-button
             v-access:code="['monitor:operlog:export']"
-            @click="handleDownloadExcel"
+            :loading="exportLoading"
+            :disabled="exportLoading"
+            @click="handleExport"
           >
             {{ $t('pages.common.export') }}
           </a-button>
