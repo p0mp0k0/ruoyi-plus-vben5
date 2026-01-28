@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { DropdownEmits, MenuItemType } from 'antdv-next';
+
 import type { VbenFormProps } from '@vben/common-ui';
 
 import type { VxeGridProps } from '#/adapter/vxe-table';
@@ -10,7 +12,7 @@ import { useAccess } from '@vben/access';
 import { Fallback, Page, useVbenDrawer } from '@vben/common-ui';
 import { EnableStatus } from '@vben/constants';
 
-import { Popconfirm, Space } from 'antdv-next';
+import { Dropdown, Popconfirm, Space } from 'antdv-next';
 
 import { useVbenVxeGrid, vxeCheckboxChecked } from '#/adapter/vxe-table';
 import {
@@ -164,6 +166,31 @@ async function handleChangeStatus(checked: boolean, row: Tenant) {
     status: checked ? EnableStatus.Enable : EnableStatus.Disable,
   });
 }
+
+const items = computed(() => {
+  const list: MenuItemType[] = [];
+  if (hasAccessByCodes(['system:tenant:edit'])) {
+    list.push(
+      { label: '同步租户字典', key: 'syncTenantDict' },
+      { label: '同步租户参数配置', key: 'syncTenantConfig' },
+    );
+  }
+  return list;
+});
+
+const handleMenuClick: DropdownEmits['menuClick'] = (e) => {
+  const { key } = e;
+  switch (key) {
+    case 'syncTenantConfig': {
+      handleSyncTenantConfig();
+      break;
+    }
+    case 'syncTenantDict': {
+      handleSyncTenantDict();
+      break;
+    }
+  }
+};
 </script>
 
 <template>
@@ -171,24 +198,21 @@ async function handleChangeStatus(checked: boolean, row: Tenant) {
     <BasicTable table-title="租户列表">
       <template #toolbar-tools>
         <Space>
-          <a-button
-            v-access:code="['system:tenant:edit']"
-            @click="handleSyncTenantDict"
+          <Dropdown
+            placement="top"
+            :menu="{ items }"
+            @menu-click="handleMenuClick"
           >
-            同步租户字典
-          </a-button>
-          <a-button
-            v-access:code="['system:tenant:edit']"
-            @click="handleSyncTenantConfig"
-          >
-            同步租户参数配置
-          </a-button>
+            <a-button>操作</a-button>
+          </Dropdown>
+
           <a-button
             v-access:code="['system:tenant:export']"
             @click="handleDownloadExcel"
           >
             {{ $t('pages.common.export') }}
           </a-button>
+
           <a-button
             :disabled="!vxeCheckboxChecked(tableApi)"
             danger
