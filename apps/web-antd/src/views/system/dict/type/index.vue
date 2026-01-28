@@ -17,7 +17,7 @@ import {
   dictTypeRemove,
   refreshDictTypeCache,
 } from '#/api/system/dict/dict-type';
-import { commonDownloadExcel } from '#/utils/file/download';
+import { useBlobExport } from '#/utils/file/export';
 
 import { emitter } from '../mitt';
 import { columns, querySchema } from './data';
@@ -121,12 +121,14 @@ async function handleRefreshCache() {
   await tableApi.query();
 }
 
-function handleDownloadExcel() {
-  commonDownloadExcel(
-    dictTypeExport,
-    '字典类型数据',
-    tableApi.formApi.form.values,
-  );
+const { exportBlob, exportLoading, buildExportFileName } =
+  useBlobExport(dictTypeExport);
+async function handleExport() {
+  // 构建表单请求参数
+  const formValues = await tableApi.formApi.getValues();
+  // 文件名
+  const fileName = buildExportFileName('字典类型数据');
+  exportBlob({ data: formValues, fileName });
 }
 </script>
 
@@ -143,7 +145,9 @@ function handleDownloadExcel() {
           </a-button>
           <a-button
             v-access:code="['system:dict:export']"
-            @click="handleDownloadExcel"
+            :loading="exportLoading"
+            :disabled="exportLoading"
+            @click="handleExport"
           >
             {{ $t('pages.common.export') }}
           </a-button>

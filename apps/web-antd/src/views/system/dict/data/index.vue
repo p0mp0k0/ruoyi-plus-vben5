@@ -5,7 +5,7 @@ import type { VxeGridProps } from '#/adapter/vxe-table';
 import type { PageQuery } from '#/api/common';
 import type { DictData } from '#/api/system/dict/dict-data-model';
 
-import { ref } from 'vue';
+import { onBeforeUnmount, onMounted, ref } from 'vue';
 
 import { useVbenDrawer } from '@vben/common-ui';
 
@@ -17,7 +17,7 @@ import {
   dictDataList,
   dictDataRemove,
 } from '#/api/system/dict/dict-data';
-import { commonDownloadExcel } from '#/utils/file/download';
+import { useBlobExport } from '#/utils/file/export';
 
 import { emitter } from '../mitt';
 import { columns, querySchema } from './data';
@@ -112,13 +112,25 @@ function handleMultiDelete() {
   });
 }
 
-function handleDownloadExcel() {
-  commonDownloadExcel(dictDataExport, '字典数据', tableApi.formApi.form.values);
+const { exportBlob, exportLoading, buildExportFileName } =
+  useBlobExport(dictDataExport);
+async function handleExport() {
+  // 构建表单请求参数
+  const formValues = await tableApi.formApi.getValues();
+  formValues.dictType = dictType.value;
+  // 文件名
+  const fileName = buildExportFileName('字典数据');
+  exportBlob({ data: formValues, fileName });
 }
 
-emitter.on('rowClick', async (value) => {
-  dictType.value = value;
-  await tableApi.query();
+onMounted(() => {
+  emitter.on('rowClick', async (value) => {
+    dictType.value = value;
+    await tableApi.query();
+  });
+});
+onBeforeUnmount(() => {
+  emitter.off('rowClick');
 });
 </script>
 
@@ -129,7 +141,9 @@ emitter.on('rowClick', async (value) => {
         <Space>
           <a-button
             v-access:code="['system:dict:export']"
-            @click="handleDownloadExcel"
+            :loading="exportLoading"
+            :disabled="exportLoading"
+            @click="handleExport"
           >
             {{ $t('pages.common.export') }}
           </a-button>
