@@ -74,14 +74,20 @@ useTimeout(300, {
 </script>
 
 <template>
-  <div class="min-h-[150px] rounded-[6px] border p-2">
+  <div class="min-h-[150px] rounded-[6px]">
     <motion.div
       v-if="data"
       :initial="{ opacity: 0 }"
       :animate="{ opacity: 1 }"
       :transition="{ duration: 0.3 }"
     >
-      <Descriptions :column="1" :items="items" size="middle" />
+      <Descriptions
+        :classes="{ label: 'w-[150px]' }"
+        :column="1"
+        :items="items"
+        size="small"
+        bordered
+      />
     </motion.div>
 
     <Skeleton v-else-if="showSkeleton && !data" active />
