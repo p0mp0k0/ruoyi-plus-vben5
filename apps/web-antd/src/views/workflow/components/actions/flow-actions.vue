@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { DropdownEmits, MenuItemType } from 'antdv-next';
+
 import type { ApprovalType } from '../type';
 
 import type { User } from '#/api/core/user';
@@ -21,7 +23,7 @@ import {
   UsergroupDeleteOutlined,
   UserOutlined,
 } from '@antdv-next/icons';
-import { Dropdown, Menu, MenuItem, Space } from 'antdv-next';
+import { Dropdown, Space } from 'antdv-next';
 
 import {
   cancelProcessApply,
@@ -284,6 +286,63 @@ const showMultiActions = computed(() => {
   }
   return false;
 });
+
+const items = computed(() => {
+  const list: MenuItemType[] = [];
+  const { buttonPermissions } = props;
+
+  if (buttonPermissions?.trust) {
+    list.push({
+      key: 'trust',
+      label: '委托',
+      icon: h(UserOutlined),
+    });
+  }
+  if (buttonPermissions?.transfer) {
+    list.push({
+      key: 'transfer',
+      label: '转办',
+      icon: h(RollbackOutlined),
+    });
+  }
+  if (showMultiActions.value && buttonPermissions?.addSign) {
+    list.push({
+      key: 'addSign',
+      label: '加签',
+      icon: h(UsergroupAddOutlined),
+    });
+  }
+  if (showMultiActions.value && buttonPermissions?.subSign) {
+    list.push({
+      key: 'subSign',
+      label: '减签',
+      icon: h(UsergroupDeleteOutlined),
+    });
+  }
+  return list;
+});
+
+const handleMenuClick: DropdownEmits['menuClick'] = (e) => {
+  const { key } = e;
+  switch (key) {
+    case 'addSign': {
+      addSignatureModalApi.open();
+      break;
+    }
+    case 'subSign': {
+      reductionSignatureModalApi.open();
+      break;
+    }
+    case 'transfer': {
+      transferModalApi.open();
+      break;
+    }
+    case 'trust': {
+      delegationModalApi.open();
+      break;
+    }
+  }
+};
 </script>
 
 <template>
@@ -300,17 +359,16 @@ const showMultiActions = computed(() => {
       <Space v-if="type === 'myself'">
         <a-button
           v-if="revocable"
-          danger
-          ghost
-          type="primary"
+          variant="outlined"
+          color="danger"
           :icon="h(RollbackOutlined)"
           @click="handleCancel"
         >
           撤销申请
         </a-button>
         <a-button
-          type="primary"
-          ghost
+          variant="outlined"
+          color="primary"
           v-if="editableAndRemoveable"
           :icon="h(EditOutlined)"
           @click="handleEdit"
@@ -319,9 +377,8 @@ const showMultiActions = computed(() => {
         </a-button>
         <a-button
           v-if="editableAndRemoveable"
-          danger
-          ghost
-          type="primary"
+          variant="outlined"
+          color="danger"
           :icon="h(EditOutlined)"
           @click="handleRemove"
         >
@@ -331,7 +388,8 @@ const showMultiActions = computed(() => {
       <Space v-if="type === 'approve'">
         <a-button
           type="primary"
-          ghost
+          variant="outlined"
+          color="green"
           :icon="h(CheckOutlined)"
           @click="handleApproval"
         >
@@ -339,9 +397,8 @@ const showMultiActions = computed(() => {
         </a-button>
         <a-button
           v-if="buttonPermissions?.termination"
-          danger
-          ghost
-          type="primary"
+          variant="outlined"
+          color="danger"
           :icon="h(ExclamationCircleOutlined)"
           @click="handleTermination"
         >
@@ -349,9 +406,8 @@ const showMultiActions = computed(() => {
         </a-button>
         <a-button
           v-if="buttonPermissions?.back"
-          danger
-          ghost
-          type="primary"
+          variant="outlined"
+          color="orange"
           :icon="h(ArrowLeftOutlined)"
           @click="handleRejection"
         >
@@ -360,39 +416,9 @@ const showMultiActions = computed(() => {
         <Dropdown
           :get-popup-container="getPopupContainer"
           placement="bottomRight"
+          :menu="{ items }"
+          @menu-click="handleMenuClick"
         >
-          <template #overlay>
-            <Menu>
-              <MenuItem
-                v-if="buttonPermissions?.trust"
-                key="1"
-                @click="() => delegationModalApi.open()"
-              >
-                <UserOutlined class="mr-2" />委托
-              </MenuItem>
-              <MenuItem
-                v-if="buttonPermissions?.transfer"
-                key="2"
-                @click="() => transferModalApi.open()"
-              >
-                <RollbackOutlined class="mr-2" /> 转办
-              </MenuItem>
-              <MenuItem
-                v-if="showMultiActions && buttonPermissions?.addSign"
-                key="3"
-                @click="() => addSignatureModalApi.open()"
-              >
-                <UsergroupAddOutlined class="mr-2" /> 加签
-              </MenuItem>
-              <MenuItem
-                v-if="showMultiActions && buttonPermissions?.subSign"
-                key="4"
-                @click="() => reductionSignatureModalApi.open()"
-              >
-                <UsergroupDeleteOutlined class="mr-2" /> 减签
-              </MenuItem>
-            </Menu>
-          </template>
           <a-button v-if="showButtonOther" :icon="h(MenuOutlined)">
             其他
           </a-button>
