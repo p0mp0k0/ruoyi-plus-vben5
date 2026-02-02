@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { MenuProps } from 'antdv-next';
+import type { MenuProps, SwitchProps } from 'antdv-next';
 
 import type { VbenFormProps } from '@vben/common-ui';
 
@@ -205,7 +205,7 @@ function handleMenuClick(key: string, row: any) {
   }
 }
 
-async function handleChangeStatus(checked: boolean, row: User) {
+async function handleChangeStatus(checked: SwitchProps['checked'], row: User) {
   await userStatusChange({
     userId: row.userId,
     status: checked ? EnableStatus.Enable : EnableStatus.Disable,

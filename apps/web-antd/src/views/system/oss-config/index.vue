@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { SwitchProps } from 'antdv-next';
+
 import type { VbenFormProps } from '@vben/common-ui';
 
 import type { VxeGridProps } from '#/adapter/vxe-table';
@@ -101,7 +103,10 @@ function handleMultiDelete() {
 }
 
 const { hasAccessByCodes } = useAccess();
-async function handleChangeStatus(checked: boolean, row: OssConfig) {
+async function handleChangeStatus(
+  checked: SwitchProps['checked'],
+  row: OssConfig,
+) {
   await ossConfigChangeStatus({
     ossConfigId: row.ossConfigId,
     configKey: row.configKey,

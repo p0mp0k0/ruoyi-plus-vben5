@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { SwitchProps } from 'antdv-next';
+
 import type { VbenFormProps } from '@vben/common-ui';
 
 import type { VxeGridProps } from '#/adapter/vxe-table';
@@ -115,7 +117,10 @@ async function handleExport() {
 }
 
 const { hasAccessByCodes } = useAccess();
-async function handleChangeStatus(checked: boolean, row: Client) {
+async function handleChangeStatus(
+  checked: SwitchProps['checked'],
+  row: Client,
+) {
   await clientChangeStatus({
     clientId: row.id,
     status: checked ? EnableStatus.Enable : EnableStatus.Disable,

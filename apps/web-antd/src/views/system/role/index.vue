@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { SwitchProps } from 'antdv-next';
+
 import type { VbenFormProps } from '@vben/common-ui';
 
 import type { VxeGridProps } from '#/adapter/vxe-table';
@@ -147,7 +149,7 @@ function handleAssignRole(record: Role) {
   router.push(`/system/role-auth/user/${record.roleId}`);
 }
 
-async function handleChangeStatus(checked: boolean, row: Role) {
+async function handleChangeStatus(checked: SwitchProps['checked'], row: Role) {
   await roleChangeStatus({
     roleId: row.roleId,
     status: checked ? EnableStatus.Enable : EnableStatus.Disable,

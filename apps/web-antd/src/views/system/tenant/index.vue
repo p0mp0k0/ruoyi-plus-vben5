@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { DropdownEmits, MenuItemType } from 'antdv-next';
+import type { DropdownEmits, MenuItemType, SwitchProps } from 'antdv-next';
 
 import type { VbenFormProps } from '@vben/common-ui';
 
@@ -164,7 +164,10 @@ function handleSyncTenantConfig() {
   });
 }
 
-async function handleChangeStatus(checked: boolean, row: Tenant) {
+async function handleChangeStatus(
+  checked: SwitchProps['checked'],
+  row: Tenant,
+) {
   await tenantStatusChange({
     id: row.id,
     tenantId: row.tenantId,

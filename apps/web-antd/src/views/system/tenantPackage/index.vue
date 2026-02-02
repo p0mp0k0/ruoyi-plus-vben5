@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { SwitchProps } from 'antdv-next';
+
 import type { VbenFormProps } from '@vben/common-ui';
 
 import type { VxeGridProps } from '#/adapter/vxe-table';
@@ -124,7 +126,10 @@ const isSuperAdmin = computed(() => {
   return hasAccessByRoles(['superadmin']);
 });
 
-async function handleChangeStatus(checked: boolean, row: TenantPackage) {
+async function handleChangeStatus(
+  checked: SwitchProps['checked'],
+  row: TenantPackage,
+) {
   await packageChangeStatus({
     packageId: row.packageId,
     status: checked ? EnableStatus.Enable : EnableStatus.Disable,

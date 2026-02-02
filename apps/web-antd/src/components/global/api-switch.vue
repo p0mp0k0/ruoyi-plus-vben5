@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { SwitchProps } from 'antdv-next';
+
 import { computed, ref } from 'vue';
 
 import { $t } from '@vben/locales';
@@ -21,7 +23,7 @@ interface Props {
   /**
    * 需要自己在内部处理更新的逻辑 因为status已经双向绑定了 可以直接获取
    */
-  api: (checked: boolean) => PromiseLike<void>;
+  api: (checked: SwitchProps['checked']) => PromiseLike<void>;
   /**
    * 更新前是否弹窗确认
    * @default false
@@ -32,7 +34,7 @@ interface Props {
    * @param checked 选中的值(更新后的值)
    * @default string '确认要更新状态吗？'
    */
-  confirmText?: (checked: boolean) => string;
+  confirmText?: (checked: SwitchProps['checked']) => string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -53,13 +55,13 @@ const unCheckedTextComputed = computed(() => {
   return props.unCheckedText ?? $t('pages.common.disable');
 });
 
-const currentChecked = defineModel<boolean>('value', {
+const currentChecked = defineModel<SwitchProps['checked']>('value', {
   default: false,
 });
 
 const loading = ref(false);
 
-function confirmUpdate(checked: boolean, lastStatus: boolean) {
+function confirmUpdate(checked: SwitchProps['checked'], lastStatus: boolean) {
   const content = isFunction(props.confirmText)
     ? props.confirmText(checked)
     : `确认要更新状态吗？`;
