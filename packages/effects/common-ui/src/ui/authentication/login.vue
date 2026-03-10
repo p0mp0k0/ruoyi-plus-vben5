@@ -10,7 +10,7 @@ import { $t } from '@vben/locales';
 
 import { useVbenForm } from '@vben-core/form-ui';
 import { VbenButton, VbenCheckbox } from '@vben-core/shadcn-ui';
-import { cloneDeep } from '@vben-core/shared/utils';
+import { cloneDeep, cn } from '@vben-core/shared/utils';
 
 import Title from './auth-title.vue';
 import ThirdPartyLogin from './third-party-login.vue';
@@ -134,9 +134,7 @@ defineExpose({
       </span>
     </div>
     <VbenButton
-      :class="{
-        'cursor-wait': loading,
-      }"
+      :class="cn({ 'cursor-wait': loading }, 'h-10')"
       :loading="loading"
       aria-label="login"
       class="w-full"
