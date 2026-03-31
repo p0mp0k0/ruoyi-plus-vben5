@@ -86,10 +86,6 @@ pnpm install
 
 参考 [菜单图标替换](https://dapdap.top/guide/quick-start.html#%E8%8F%9C%E5%8D%95%E5%9B%BE%E6%A0%87%E5%AF%BC%E5%85%A5)
 
-- 关于代码生成
-
-V5版本代码生成模板为付费功能 [详见](https://dapdap.top/other/template.html)
-
 - 关于一些监控的地址配置(微服务版本可以跳过这一小节)
 
 使用[RuoYi-Vue-Plus](https://gitee.com/dromara/RuoYi-Vue-Plus/tree/5.X/)注意 `已经去除 admin/snailjob 的.env 配置` 可自行修改 有两种方式
