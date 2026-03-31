@@ -52,7 +52,7 @@
     "axios": "catalog:",
     "cropperjs": "catalog:",
     "dayjs": "catalog:",
-    "echarts": "catalog:conflicts_echarts_h5_5_1",
+    "echarts": "catalog:",
     "lodash-es": "catalog:",
     "motion-v": "catalog:",
     "pinia": "catalog:",
